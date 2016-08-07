@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="mreit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Introductions</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Introductions</text></para>
+    </header>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Swagger™ is a project used to describe and document RESTful APIs.</text></para>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">The Swagger specification defines a set of files required to describe such an API. These files can then be used by the Swagger-UI project to display the API and Swagger-Codegen to generate clients in various languages. Additional utilities can also take advantage of the resulting files, such as testing tools.</text></para>
+  </body>
+</topic>

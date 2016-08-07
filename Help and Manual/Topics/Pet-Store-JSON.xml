@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="mreit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Pet Store JSON</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Pet Store JSON</text></para>
+    </header>
+    <para styleclass="Code Example"><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;swagger&quot;: &quot;2.0&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;info&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;This is a sample server Petstore server. &#160;You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). &#160;For this sample, you can use the api key `special-key` to test the authorization filters.&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;version&quot;: &quot;1.0.0&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;title&quot;: &quot;Swagger Petstore&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;termsOfService&quot;: &quot;http://swagger.io/terms/&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;contact&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;email&quot;: &quot;apiteam@swagger.io&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;license&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;Apache 2.0&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;url&quot;: &quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;host&quot;: &quot;petstore.swagger.io&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;basePath&quot;: &quot;/v2&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Everything about your Pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;externalDocs&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Find out more&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;url&quot;: &quot;http://swagger.io&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;store&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Access to Petstore orders&quot;</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;user&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Operations about user&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;externalDocs&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Find out more about our store&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;url&quot;: &quot;http://swagger.io&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;schemes&quot;: [&quot;http&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;paths&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/pet&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Add a new pet to the store&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;addPet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;consumes&quot;: [&quot;application/json&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/xml&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Pet object that needs to be added to the store&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Pet&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;405&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid input&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;put&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Update an existing pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;updatePet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;consumes&quot;: [&quot;application/json&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/xml&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Pet object that needs to be added to the store&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Pet&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid ID supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Pet not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;405&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Validation exception&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/pet/findByStatus&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Finds Pets by status&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Multiple status values can be provided with comma separated strings&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;findPetsByStatus&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;status&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;query&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Status values that need to be considered for filter&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;enum&quot;: [&quot;available&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;pending&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;sold&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;default&quot;: &quot;available&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;collectionFormat&quot;: &quot;multi&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Pet&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid status value&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/pet/findByTags&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Finds Pets by tags&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;findPetsByTags&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;tags&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;query&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Tags to filter by&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;collectionFormat&quot;: &quot;multi&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Pet&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid tag value&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;deprecated&quot;: true</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/pet/{petId}&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Find pet by ID&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Returns a single pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;getPetById&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;petId&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;ID of pet to return&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Pet&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid ID supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Pet not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;api_key&quot;: []</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Updates a pet in the store with form data&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;updatePetWithForm&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;consumes&quot;: [&quot;application/x-www-form-urlencoded&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;petId&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;ID of pet that needs to be updated&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;name&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;formData&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Updated name of the pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: false,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;status&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;formData&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Updated status of the pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: false,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;405&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid input&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;delete&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Deletes a pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;deletePet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;api_key&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;header&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: false,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;petId&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Pet id to delete&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid ID supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Pet not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/pet/{petId}/uploadImage&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;pet&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;uploads an image&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;uploadFile&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;consumes&quot;: [&quot;multipart/form-data&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;petId&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;ID of pet to update&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;additionalMetadata&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;formData&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Additional data to pass to server&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: false,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;file&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;formData&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;file to upload&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: false,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;file&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/ApiResponse&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: [&quot;write:pets&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/store/inventory&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;store&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Returns pet inventories by status&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Returns a map of status codes to quantities&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;getInventory&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;additionalProperties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int32&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;security&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;api_key&quot;: []</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/store/order&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;store&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Place an order for a pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;placeOrder&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;order placed for purchasing the pet&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Order&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Order&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid Order&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/store/order/{orderId}&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;store&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Find purchase order by ID&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;getOrderById&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;orderId&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;ID of pet that needs to be fetched&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;maximum&quot;: 10.0,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;minimum&quot;: 1.0,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Order&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid ID supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Order not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;delete&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;store&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Delete purchase order by ID&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;deleteOrder&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;orderId&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;ID of the order that needs to be deleted&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;minimum&quot;: 1.0,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid ID supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Order not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/user&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Create user&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;This can only be done by the logged in user.&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;createUser&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Created user object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/User&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;default&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/user/createWithArray&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Creates list of users with given input array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;createUsersWithArrayInput&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;List of user object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/User&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;default&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/user/createWithList&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;post&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Creates list of users with given input array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;createUsersWithListInput&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;List of user object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/User&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;default&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/user/login&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Logs user into the system&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;loginUser&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;username&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;query&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;The user name for login&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;password&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;query&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;The password for login in clear text&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;headers&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;X-Rate-Limit&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int32&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;calls per hour allowed by the user&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;X-Expires-After&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;date-time&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;date in UTC when token expires&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid username/password supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/user/logout&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Logs out current logged in user session&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;logoutUser&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;default&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;/user/{username}&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;get&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Get user by user name&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;getUserByName&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;username&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;The name that needs to be fetched. Use user1 for testing. &quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;200&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;successful operation&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/User&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid username supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;User not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;put&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Updated user&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;This can only be done by the logged in user.&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;updateUser&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;username&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;name that need to be updated&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;body&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Updated user object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;schema&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/User&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid user supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;User not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;delete&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: [&quot;user&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;summary&quot;: &quot;Delete user&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;This can only be done by the logged in user.&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;operationId&quot;: &quot;deleteUser&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;produces&quot;: [&quot;application/xml&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;application/json&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;parameters&quot;: [{</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;username&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;path&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;The name that needs to be deleted&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: true,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;responses&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;400&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Invalid username supplied&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;404&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;User not found&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;securityDefinitions&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petstore_auth&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;oauth2&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;authorizationUrl&quot;: &quot;http://petstore.swagger.io/oauth/dialog&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;flow&quot;: &quot;implicit&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;scopes&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;write:pets&quot;: &quot;modify pets in your account&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;read:pets&quot;: &quot;read your pets&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;api_key&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;apiKey&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;api_key&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;in&quot;: &quot;header&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;definitions&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;Order&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;properties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;id&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;petId&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;quantity&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int32&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;shipDate&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;date-time&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;status&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Order Status&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;enum&quot;: [&quot;placed&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;approved&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;delivered&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;complete&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;boolean&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;default&quot;: false</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;Order&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;Category&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;properties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;id&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;Category&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;User&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;properties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;id&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;username&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;firstName&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;lastName&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;email&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;password&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;phone&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;userStatus&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int32&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;User Status&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;User&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;Tag&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;properties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;id&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;Tag&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;Pet&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;required&quot;: [&quot;name&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;photoUrls&quot;],</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;properties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;id&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int64&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;category&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Category&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;example&quot;: &quot;doggie&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;photoUrls&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;photoUrl&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;wrapped&quot;: true</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;tags&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;array&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;tag&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;wrapped&quot;: true</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;items&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;$ref&quot;: &quot;#/definitions/Tag&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;status&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;pet status in the store&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;enum&quot;: [&quot;available&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;pending&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;sold&quot;]</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;xml&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;name&quot;: &quot;Pet&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;ApiResponse&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;object&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;properties&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;code&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;integer&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;format&quot;: &quot;int32&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;message&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">&quot;type&quot;: &quot;string&quot;</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">},</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">&quot;externalDocs&quot;: {</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;description&quot;: &quot;Find out more about Swagger&quot;,</text></para>
+    <para styleclass="Code Example"><tab /><tab /><text styleclass="Code Example" translate="true">&quot;url&quot;: &quot;http://swagger.io&quot;</text></para>
+    <para styleclass="Code Example"><tab /><text styleclass="Code Example" translate="true">}</text></para>
+    <para styleclass="Code Example"><text styleclass="Code Example" translate="true">}</text></para>
+  </body>
+</topic>

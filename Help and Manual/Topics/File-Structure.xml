@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="mreit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">File Structure</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">File Structure</text></para>
+    </header>
+    <para styleclass="Normal" style="text-align:left; text-indent:0px; margin-top:15px; margin-right:0px; margin-bottom:0px; margin-left:0px; line-height:1.50; white-space:normal; page-break-inside:auto; page-break-after:auto; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">The Swagger representation of the API is made of a single file. However, parts of the definitions can be split into separate files, at the discretion of the user. This is applicable for </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">$ref</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> fields in the specification as follows from the </text><link displaytype="text" defaultstyle="true" type="weblink" href="http://json-schema.org" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">JSON Schema</link><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> definitions.</text></para>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">By convention, the Swagger specification file is named </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">swagger.json</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">.</text></para>
+  </body>
+</topic>

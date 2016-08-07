@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="mreit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Data Types</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Data Types</text></para>
+    </header>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><anchor id="DATATYPETYPE" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;"></anchor><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Primitive data types in the Swagger Specification are based on the types supported by the </text><link displaytype="text" defaultstyle="true" type="weblink" href="http://json-schema.org/latest/json-schema-core.html#anchor8" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">JSON-Schema Draft 4</link><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">. Models are described using the </text><link displaytype="text" defaultstyle="true" type="topiclink" href="Schema-Object" anchor="schemaObject" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Schema Object</link><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> which is a subset of JSON Schema Draft 4.</text></para>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">An additional primitive data type </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">&quot;file&quot;</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> is used by the </text><link displaytype="text" defaultstyle="true" type="topiclink" href="Parameter-Object" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Parameter Object</link><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> and the </text><link displaytype="text" defaultstyle="true" type="topiclink" href="Response-Object" anchor="responseObject" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Response Object</link><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> to set the parameter type or the response as being a file.</text></para>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><anchor id="DATATYPEFORMAT" styleclass="Normal text" style="font-family:&apos;Arial Unicode MS&apos;; font-size:10pt; font-weight:normal; font-style:normal; text-decoration:none; text-transform:none; vertical-align:baseline; color:#000000; background-color:transparent; letter-spacing:normal; letter-scaling:100%;"></anchor><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Primitives have an optional modifier property </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">format</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">. Swagger uses several known formats to more finely define the data type being used. However, the </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">format</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> property is an open </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">-valued property, and can have any value to support documentation needs. Formats such as </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">&quot;email&quot;</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">, </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">&quot;uuid&quot;</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">, etc., can be used even though they are not defined by this specification. Types that are not accompanied by a </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">format</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> property follow their definition from the JSON Schema (except for </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">file</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> type which is defined above). The formats defined by the Swagger Specification are:</text></para>
+    <para styleclass="Normal" style="margin-top:15px; line-height:1.00; tabstops:none;"><table rowcount="12" colcount="4" style="width:auto; cell-padding:1px; cell-spacing:2px; page-break-inside:auto; border-width:0px; border-spacing:2px; cell-border-width:1px; border-color:#a0a0a0; border-style:solid; background-color:none; head-row-background-color:none; alt-row-background-color:none;">
+      <thead style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; font-weight:bold; vertical-align:baseline; color:#333333;" translate="true">Common Name</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><link displaytype="text" defaultstyle="true" type="topiclink" href="" anchor="DATATYPETYPE" styleclass="Normal" style="font-family:Consolas; font-size:6pt; font-weight:bold; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">type</link></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><link displaytype="text" defaultstyle="true" type="topiclink" href="" anchor="DATATYPEFORMAT" styleclass="Normal" style="font-family:Consolas; font-size:6pt; font-weight:bold; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">format</link></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; font-weight:bold; vertical-align:baseline; color:#333333;" translate="true">Comments</text></para>
+        </td>
+      </thead>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">integer</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">integer</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">int32</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">signed 32 bits</text></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">long</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">integer</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">int64</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">signed 64 bits</text></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">float</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">number</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">float</text></para>
+        </td>
+        <td style="width:189px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">double</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">number</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">double</text></para>
+        </td>
+        <td style="width:189px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">string</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text></para>
+        </td>
+        <td style="width:57px;">
+        </td>
+        <td style="width:189px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">byte</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">byte</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">base64 encoded characters</text></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">binary</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">binary</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">any sequence of octets</text></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">boolean</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">boolean</text></para>
+        </td>
+        <td style="width:57px;">
+        </td>
+        <td style="width:189px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">date</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">date</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">As defined by </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">full-date</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> - </text><link displaytype="text" defaultstyle="true" type="weblink" href="http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">RFC3339</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">dateTime</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">date-time</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">As defined by </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">date-time</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> - </text><link displaytype="text" defaultstyle="true" type="weblink" href="http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14" styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">RFC3339</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:90px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">password</text></para>
+        </td>
+        <td style="vertical-align:middle; width:52px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">string</text></para>
+        </td>
+        <td style="vertical-align:middle; width:57px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">password</text></para>
+        </td>
+        <td style="vertical-align:middle; width:189px; background-color:#ffffff;">
+          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Used to hint UIs the input needs to be obscured.</text></para>
+        </td>
+      </tr>
+    </table></para>
+  </body>
+</topic>

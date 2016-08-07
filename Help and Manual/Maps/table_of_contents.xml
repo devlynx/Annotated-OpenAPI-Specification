@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xsi="http://www.w3.org/2001/XInclude">
+  <topicref type="topic" id="425896905721216" build="ALL" modified="2016-08-07T14:15:09.824Z" icon="0" href="Annotated-Introduction">
+    <caption translate="true">Annotated Introduction</caption>
+  </topicref>
+  <topicref type="topic" id="425886806032579" build="ALL" modified="2016-08-06T17:12:45.818Z" icon="0">
+    <caption translate="true">Specification</caption>
+    <topicref type="topic" id="425886636919423" build="ALL" modified="2016-08-06T16:17:29.951Z" icon="0" href="Title-Page">
+      <caption translate="true">Title Page</caption>
+    </topicref>
+    <topicref type="topic" id="425888125600273" build="ALL" modified="2016-08-06T16:28:04.949Z" icon="0" href="Introduction">
+      <caption translate="true">Introductions</caption>
+    </topicref>
+    <topicref type="topic" id="425884733136858" build="ALL" modified="2016-08-06T16:29:14.244Z" icon="0" href="Revision-History">
+      <caption translate="true">Revision History</caption>
+    </topicref>
+    <topicref type="topic" id="425887525008524" build="ALL" modified="2016-08-06T16:31:13.531Z" icon="0" href="Definitions">
+      <caption translate="true">Definitions</caption>
+    </topicref>
+    <topicref type="topic" id="425888489339332" build="ALL" modified="2016-08-06T16:36:14.381Z" icon="0" href="Format">
+      <caption translate="true">Format</caption>
+    </topicref>
+    <topicref type="topic" id="425887939611720" build="ALL" modified="2016-08-06T16:39:34.827Z" icon="0" href="File-Structure">
+      <caption translate="true">File Structure</caption>
+    </topicref>
+    <topicref type="topic" id="425886912275732" build="ALL" modified="2016-08-06T16:41:15.020Z" icon="0" href="Data-Types">
+      <caption translate="true">Data Types</caption>
+    </topicref>
+    <topicref type="topic" id="425885114478070" build="ALL" modified="2016-08-06T17:12:36.915Z" icon="0">
+      <caption translate="true">Schema</caption>
+      <topicref type="topic" id="425887307856561" build="ALL" modified="2016-08-06T16:54:33.826Z" icon="0" href="Swagger-Object">
+        <caption translate="true">Swagger Object</caption>
+      </topicref>
+      <topicref type="topic" id="425889226062704" build="ALL" modified="2016-08-06T17:08:12.873Z" icon="0" href="Info-Object">
+        <caption translate="true">Info Object</caption>
+      </topicref>
+      <topicref type="topic" id="425888951753294" build="ALL" modified="2016-08-06T17:14:34.168Z" icon="0" href="Contact-Object">
+        <caption translate="true">Contact Object</caption>
+      </topicref>
+      <topicref type="topic" id="425886392422480" build="ALL" modified="2016-08-06T17:16:17.128Z" icon="0" href="License-Object">
+        <caption translate="true">License Object</caption>
+      </topicref>
+      <topicref type="topic" id="425886276483520" build="ALL" modified="2016-08-06T17:17:57.426Z" icon="0" href="Paths-Object">
+        <caption translate="true">Paths Object</caption>
+      </topicref>
+      <topicref type="topic" id="425889137787535" build="ALL" modified="2016-08-06T17:19:26.576Z" icon="0" href="Path-Item-Object">
+        <caption translate="true">Path Item Object</caption>
+      </topicref>
+      <topicref type="topic" id="425889172467706" build="ALL" modified="2016-08-06T17:21:03.815Z" icon="0" href="Operation-Object">
+        <caption translate="true">Operation Object</caption>
+      </topicref>
+      <topicref type="topic" id="425885771050330" build="ALL" modified="2016-08-06T17:22:44.411Z" icon="0" href="External-Documentation-Object">
+        <caption translate="true">External Documentation Object</caption>
+      </topicref>
+      <topicref type="topic" id="42589592915528" build="ALL" modified="2016-08-06T17:24:02.336Z" icon="0" href="Parameter-Object">
+        <caption translate="true">Parameter Object</caption>
+      </topicref>
+      <topicref type="topic" id="425886228290373" build="ALL" modified="2016-08-06T17:27:09.261Z" icon="0" href="Items-Object">
+        <caption translate="true">Items Object</caption>
+      </topicref>
+      <topicref type="topic" id="425886040384098" build="ALL" modified="2016-08-06T17:28:52.613Z" icon="0" href="Responses-Object">
+        <caption translate="true">Responses Object</caption>
+      </topicref>
+      <topicref type="topic" id="425888101735007" build="ALL" modified="2016-08-06T17:30:40.012Z" icon="0" href="Response-Object">
+        <caption translate="true">Response Object</caption>
+      </topicref>
+      <topicref type="topic" id="425888245901796" build="ALL" modified="2016-08-06T20:58:02.102Z" icon="0" href="Headers-Object">
+        <caption translate="true">Headers Object</caption>
+      </topicref>
+      <topicref type="topic" id="425889834083644" build="ALL" modified="2016-08-06T21:03:07.210Z" icon="0" href="Header-Object">
+        <caption translate="true">Header Object</caption>
+      </topicref>
+      <topicref type="topic" id="425886886510657" build="ALL" modified="2016-08-06T21:00:14.034Z" icon="0" href="Example-Object">
+        <caption translate="true">Example Object</caption>
+      </topicref>
+      <topicref type="topic" id="425887493471584" build="ALL" modified="2016-08-06T21:07:26.706Z" icon="0" href="Tag-Object">
+        <caption translate="true">Tag Object</caption>
+      </topicref>
+      <topicref type="topic" id="425889726651248" build="ALL" modified="2016-08-06T21:08:50.431Z" icon="0" href="Reference-Object">
+        <caption translate="true">Reference Object</caption>
+      </topicref>
+      <topicref type="topic" id="425889840252473" build="ALL" modified="2016-08-06T23:30:19.664Z" icon="0" href="Schema-Object">
+        <caption translate="true">Schema Object</caption>
+      </topicref>
+      <topicref type="topic" id="425891424687488" build="ALL" modified="2016-08-06T23:36:02.606Z" icon="0" href="XML-Object">
+        <caption translate="true">XML Object</caption>
+      </topicref>
+      <topicref type="topic" id="425890254376138" build="ALL" modified="2016-08-06T23:40:31.956Z" icon="0" href="Definitions-Object">
+        <caption translate="true">Definitions Object</caption>
+      </topicref>
+      <topicref type="topic" id="425887919488036" build="ALL" modified="2016-08-06T23:42:08.234Z" icon="0" href="Parameters-Definitions-Object">
+        <caption translate="true">Parameters Definitions Object</caption>
+      </topicref>
+      <topicref type="topic" id="425888275195238" build="ALL" modified="2016-08-06T23:43:19.252Z" icon="0" href="Responses-Definitions-Object">
+        <caption translate="true">Responses Definitions Object</caption>
+      </topicref>
+      <topicref type="topic" id="425891971181869" build="ALL" modified="2016-08-06T23:44:56.599Z" icon="0" href="Security-Definitions-Object">
+        <caption translate="true">Security Definitions Object</caption>
+      </topicref>
+      <topicref type="topic" id="425890487547312" build="ALL" modified="2016-08-06T23:46:45.891Z" icon="0" href="Security-Scheme-Object">
+        <caption translate="true">Security Scheme Object</caption>
+      </topicref>
+      <topicref type="topic" id="425888852536176" build="ALL" modified="2016-08-06T23:48:17.943Z" icon="0" href="Scopes-Object">
+        <caption translate="true">Scopes Object</caption>
+      </topicref>
+      <topicref type="topic" id="425890581720281" build="ALL" modified="2016-08-06T23:49:51.688Z" icon="0" href="Security-Requirement-Object">
+        <caption translate="true">Security Requirement Object</caption>
+      </topicref>
+    </topicref>
+    <topicref type="topic" id="425895983906322" build="ALL" modified="2016-08-06T23:53:04.364Z" icon="0" href="Security-Filtering">
+      <caption translate="true">Security Filtering</caption>
+    </topicref>
+    <topicref type="topic" id="425892121724946" build="ALL" modified="2016-08-07T09:43:52.926Z" icon="0" href="Vendor-Extensions">
+      <caption translate="true">Vendor Extensions</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="425895941577144" build="ALL" modified="2016-08-07T10:33:42.306Z" icon="0" href="Pet-Store-JSON">
+    <caption translate="true">Pet Store JSON</caption>
+  </topicref>
+</map>
