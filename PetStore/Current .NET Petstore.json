@@ -1,0 +1,202 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v1",
+		"title": "Swagger Petstore",
+		"description": "This is a sample server Petstore server. You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). For this sample, you can use the api key 'special-key' to test the authorization filters.\n\nFind out more about Swagger",
+		"termsOfService": "http://swagger.io/terms/",
+		"contact": {
+			"name": "Swagger",
+			"url": "http://swagger.io",
+			"email": "mailto:apiteam@swagger.io?subject=Swagger"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+	"basePath": "/",
+	"paths": {
+		"/api/incidents/{id}": {
+			"get": {
+				"tags": ["incidents"],
+				"summary": "Gets the specified Incident.",
+				"operationId": "ApiIncidentsByIdGet",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "The identifier.",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"put": {
+				"tags": ["incidents"],
+				"summary": "Updates all properties of a specific Incident",
+				"operationId": "ApiIncidentsByIdPut",
+				"consumes": ["application/json",
+				"text/json",
+				"application/json-patch+json"],
+				"produces": [],
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "The identifier.",
+					"required": true,
+					"type": "string",
+					"format": "uuid"
+				},
+				{
+					"name": "value",
+					"in": "body",
+					"description": "The value.",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"204": {
+						"description": "No Content"
+					}
+				},
+				"deprecated": false
+			},
+			"delete": {
+				"tags": ["incidents"],
+				"summary": "Deletes the specified Incident.",
+				"operationId": "ApiIncidentsByIdDelete",
+				"consumes": [],
+				"produces": [],
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "The identifier.",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"204": {
+						"description": "No Content"
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/api/incidents": {
+			"get": {
+				"tags": ["incidents"],
+				"summary": "Gets a list of Incidents.",
+				"operationId": "ApiIncidentsGet",
+				"consumes": [],
+				"produces": [],
+				"responses": {
+					"204": {
+						"description": "No Content"
+					},
+					"200": {
+						"description": "OK",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Incident"
+							}
+						}
+					},
+					"400": {
+						"description": "BadRequest",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Incident"
+							}
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"post": {
+				"tags": ["incidents"],
+				"summary": "Creates a new Incident",
+				"description": "## Example \r\n             \r\n                POST /incidents \r\n                { \r\n                    \"id\": \"123\", \r\n                    \"description\": \"Some product\" \r\n                }",
+				"operationId": "ApiIncidentsPost",
+				"consumes": ["application/json",
+				"text/json",
+				"application/json-patch+json"],
+				"produces": [],
+				"parameters": [{
+					"name": "value",
+					"in": "body",
+					"description": "The value.",
+					"required": false,
+					"schema": {
+						"type": "string"
+					}
+				}],
+				"responses": {
+					"204": {
+						"description": "No Content"
+					},
+					"201": {
+						"description": "Created",
+						"schema": {
+							"$ref": "#/definitions/Incident"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		}
+	},
+	"definitions": {
+		"Incident": {
+			"required": ["jurisdiction",
+			"name"],
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"jurisdiction": {
+					"maxLength": 60,
+					"minLength": 3,
+					"type": "string"
+				},
+				"name": {
+					"description": "Incident Name",
+					"maxLength": 60,
+					"minLength": 5,
+					"type": "string"
+				},
+				"createdTime": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"lastUpdatedTime": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"createdBy": {
+					"type": "string"
+				},
+				"lastUpdatedBy": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		
+	}
+}

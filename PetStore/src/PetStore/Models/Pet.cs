@@ -19,22 +19,18 @@
 
 namespace PetStore
 {
-    using System.IO;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
+    using System.ComponentModel.DataAnnotations;
 
-    public class Program
+    /// <summary>
+    ///
+    /// </summary>
+    public class Pet
     {
-        public static void Main(string[] args)
-        {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+        [Required]
+        public string id { get; set; }
 
-            host.Run();
-        }
+        [Required]
+        [StringLength(60, MinimumLength = 5)]
+        public string Name { get; set; }
     }
 }
