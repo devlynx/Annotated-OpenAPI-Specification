@@ -74,17 +74,6 @@ namespace PetStore
 #endif
                 });
 
-            Contact contact = new Contact()
-            {
-                Email = "mailto:apiteam@swagger.io?subject=Swagger",
-                Name = "Swagger",
-                Url = "http://swagger.io",
-            };
-            License license = new License()
-            {
-                Name = "Apache 2.0",
-                Url = "http://www.apache.org/licenses/LICENSE-2.0.html",
-            };
             services.AddSwaggerGen(c =>
                 {
                     c.SingleApiVersion(new Info
@@ -93,16 +82,22 @@ namespace PetStore
                         Title = "Swagger Petstore",
                         Description = "This is a sample server Petstore server. You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). For this sample, you can use the api key 'special-key' to test the authorization filters.\n\nFind out more about Swagger",
                         TermsOfService = "http://swagger.io/terms/",
-                        Contact = contact,
-                        License = license,
+                        Contact = new Contact()
+                        {
+                            Email = "mailto:apiteam@swagger.io?subject=Swagger",
+                            Name = "Swagger",
+                            Url = "http://swagger.io",
+                        },
+                        License = new License()
+                        {
+                            Name = "Apache 2.0",
+                            Url = "http://www.apache.org/licenses/LICENSE-2.0.html",
+                        },
                     });
-                    //c.OperationFilter<AssignOperationVendorExtensions>();
-                });
+                    c.DescribeAllEnumsAsStrings();
+                    c.IncludeXmlComments(GetXmlCommentsPath());
+                    c.DocumentFilter<ApplyDocumentVendorExtensions>();
 
-            services.ConfigureSwaggerGen(c =>
-                {
-                   c.DescribeAllEnumsAsStrings();
-                   c.IncludeXmlComments(GetXmlCommentsPath());
                 });
         }
 

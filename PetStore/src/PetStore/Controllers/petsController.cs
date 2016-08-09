@@ -26,10 +26,11 @@ namespace PetStore
     using Swashbuckle.SwaggerGen.Annotations;
 
     /// <summary>
-    /// Class incidentsController.
+    /// Everything about your Pets summary
     /// </summary>
+    /// <example>Everything about your Pets Example</example>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
-    /// <remarks>Everything about your Pets</remarks>
+    /// <remarks>Everything about your Pets remartks</remarks>
     [Route("api/[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
