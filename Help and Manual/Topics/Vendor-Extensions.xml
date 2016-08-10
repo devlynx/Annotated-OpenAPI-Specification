@@ -6,10 +6,13 @@
     <header>
       <para styleclass="Heading1"><anchor id="VENDOREXTENSIONS" styleclass="Heading1"></anchor><text styleclass="Heading1" translate="true">Vendor Extensions</text></para>
     </header>
-    <para styleclass="Heading3"><text styleclass="Normal" translate="true">aka Specification Extensions</text></para>
-    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">While the Swagger Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.</text></para>
-    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">The extensions properties are always prefixed by </text><text styleclass="Normal" style="font-family:Consolas; font-size:6pt; vertical-align:baseline; color:#333333; background-color:#f8f8f8;" translate="true">&quot;x-&quot;</text><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true"> and can have any valid JSON format value.</text></para>
-    <para styleclass="Normal" style="margin-top:15px; line-height:1.57; tabstops:none;"><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">The extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).</text></para>
-    <para styleclass="Heading3" style="text-align:left; text-indent:0px; margin-top:20px; margin-right:0px; margin-bottom:0px; margin-left:0px; line-height:2.07; background-color:transparent; white-space:normal; page-break-inside:auto; page-break-after:auto; border:none; tabstops:none;"></para>
+    <para styleclass="Heading3"><text styleclass="Normal" style="font-weight:bold;" translate="true">aka Specification Extensions</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">While the Swagger Specification tries to accommodate most use cases, additional data can be added to extend the specification at certain points.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">The extensions properties are always prefixed by </text><text styleclass="Normal" translate="true">&quot;x-&quot;</text><text styleclass="Normal" translate="true"> and can have any valid JSON format value.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">The extensions may or may not be supported by the available tooling, but those may be extended as well to add requested support (if tools are internal or open-sourced).</text></para>
+    <para styleclass="Normal"></para>
   </body>
 </topic>

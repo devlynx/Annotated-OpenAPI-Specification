@@ -9,5 +9,9 @@
     <para styleclass="Normal"><text styleclass="Normal" translate="true">Swashbuckle</text></para>
     <para styleclass="Normal"><text styleclass="Normal" translate="true">Swagger</text></para>
     <para styleclass="Normal"><text styleclass="Normal" translate="true">.NET Core</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="http://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md" target="_blank" styleclass="Normal" translate="true">Official OpenAPI Specification<title translate="true">On GitHub.com</title></link></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="http://swagger.io/" target="_blank" styleclass="Normal" translate="true">Swagger Home Page<title translate="true">swagger.io</title></link></para>
   </body>
 </topic>

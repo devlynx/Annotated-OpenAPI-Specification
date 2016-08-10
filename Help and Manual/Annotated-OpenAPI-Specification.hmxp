@@ -18,32 +18,36 @@
     </helpwindows>
     <styleclasses>
       <styleclass name="Code Example" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="para">white-space:nowrap; page-break-inside:avoid; </style-set>
-        <style-set media="screen" type="text">font-family:'Courier New'; font-size:10pt; </style-set>
+        <style-set media="screen" type="para">white-space:nowrap; page-break-inside:avoid;</style-set>
+        <style-set media="screen" type="text">font-family:'Courier New'; font-size:10pt;</style-set>
       </styleclass>
       <styleclass name="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-family:Calibri; font-size:12pt; </style-set>
+        <style-set media="screen" type="text">font-family:Calibri; font-size:12pt;</style-set>
       </styleclass>
       <styleclass name="Comment" parentclass="Normal" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-size:14pt; </style-set>
+        <style-set media="screen" type="text">font-size:14pt;</style-set>
       </styleclass>
       <styleclass name="Heading1" parentclass="Normal" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-size:18pt; font-weight:bold; </style-set>
+        <style-set media="screen" type="text">font-size:18pt; font-weight:bold;</style-set>
       </styleclass>
       <styleclass name="Heading2" parentclass="Heading1" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-size:16pt; </style-set>
+        <style-set media="screen" type="text">font-size:16pt;</style-set>
       </styleclass>
       <styleclass name="Heading3" parentclass="Heading1" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-size:14pt; </style-set>
+        <style-set media="screen" type="text">font-size:14pt;</style-set>
       </styleclass>
       <styleclass name="Image Caption" parentclass="Normal" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-size:10pt; font-weight:bold; </style-set>
+        <style-set media="screen" type="text">font-size:10pt; font-weight:bold;</style-set>
       </styleclass>
       <styleclass name="Notes" parentclass="Normal" nextclass="Normal" shortcut="0">
-        <style-set media="screen" type="text">font-size:14pt; </style-set>
+        <style-set media="screen" type="text">font-size:14pt;</style-set>
+      </styleclass>
+      <styleclass name="OpenAPI Style" nextclass="Normal" shortcut="0">
+        <style-set media="screen" type="para">text-align:left; text-indent:0px; margin-top:15px; margin-right:0px; margin-bottom:0px; margin-left:0px; line-height:1.36; background-color:#f8f8f8; white-space:nowrap; page-break-inside:avoid; page-break-after:auto; padding:10px; border-color:#cccccc; border-style:single; border-width:1px;</style-set>
+        <style-set media="screen" type="text">font-family:Consolas; font-size:10pt; font-weight:normal; font-style:normal; text-transform:none; vertical-align:baseline; color:#333333; background-color:transparent; letter-spacing:normal; letter-scaling:100%;</style-set>
       </styleclass>
       <tablestyleclass name="Default">
-        <style-set media="screen">width:auto; cell-padding:0px; cell-spacing:0px; page-break-inside:auto; border-width:0px; border-spacing:0px; cell-border-width:0px; border-style:none; background-color:none; head-row-background-color:none; alt-row-background-color:none; </style-set>
+        <style-set media="screen">width:auto; cell-padding:0px; cell-spacing:0px; page-break-inside:auto; border-width:0px; border-spacing:0px; cell-border-width:0px; border-style:none; background-color:none; head-row-background-color:none; alt-row-background-color:none;</style-set>
       </tablestyleclass>
     </styleclasses>
     <config-group name="project">
@@ -90,6 +94,61 @@
       <config-value name="imageconversion">1</config-value>
       <config-value name="jpgquality">90</config-value>
       <config-value name="htmlpopup">3</config-value>
+      <config-value name="topiceditor">0</config-value>
+      <config-value name="topicsimpleheadercolor">#D0D0D0</config-value>
+      <config-value name="topicsimpletextcolor">#FFFFFF</config-value>
+      <config-value name="topicsimplebuttons">1</config-value>
+      <config-group name="TOPICSIMPLEBUTTON1">
+        <config-value name="CAPTION" translate="true">Top</config-value>
+      </config-group>
+      <config-group name="TOPICSIMPLEBUTTON2">
+        <config-value name="CAPTION" translate="true">Previous</config-value>
+      </config-group>
+      <config-group name="TOPICSIMPLEBUTTON3">
+        <config-value name="CAPTION" translate="true">Next</config-value>
+      </config-group>
+      <config-group name="TOPICTEMPLATES">
+        <config-value name="Default" translate="true"><![CDATA[<%DOCTYPE%>
+<html>
+<head>
+   <title><%TOPIC_TITLE%></title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="<%TOPIC_KEYWORDS%>" />
+   <meta http-equiv="Content-Type" content="text/html; charset=<%DOCCHARSET%>" />
+   <IF_CHM><meta http-equiv="X-UA-Compatible" content="IE=8" /></IF_CHM>
+   <IF_HTML><meta http-equiv="X-UA-Compatible" content="IE=edge" /></IF_HTML>
+   <meta name="description" content="<%TOPIC_DESCRIPTION%>" />
+   <meta name="picture" content="<%TOPIC_PICTURE%>" />
+   <link type="text/css" href="<%STYLESHEET%>" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+</head>
+<body>
+
+<IF_TOPIC_HEADER>
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#D0D0D0">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <%TOPIC_HEADER%>
+    </td>
+    <td style="text-align:right">
+     <a href="<%HREF_DEFAULT_PAGE%>">Top</a>&nbsp;
+     <IF_PREVIOUS_PAGE><a href="<%HREF_PREVIOUS_PAGE%>">Previous</a>&nbsp;</IF_PREVIOUS_PAGE>
+     <IF_NEXT_PAGE><a href="<%HREF_NEXT_PAGE%>">Next</a></IF_NEXT_PAGE>
+    </td>
+  </tr>
+</table>
+</IF_TOPIC_HEADER>
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<%TOPIC_TEXT%>
+</td></tr></table>
+
+</body>
+</html>]]></config-value>
+      </config-group>
     </config-group>
     <config-group name="chm">
       <config-value name="defaultext">.html</config-value>

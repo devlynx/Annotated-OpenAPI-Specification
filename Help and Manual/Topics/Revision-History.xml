@@ -6,60 +6,60 @@
     <header>
       <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Revision History</text></para>
     </header>
-    <para styleclass="Normal" style="margin-top:15px; line-height:1.00; tabstops:none;"><table rowcount="5" colcount="3" style="width:auto; cell-padding:1px; cell-spacing:2px; page-break-inside:auto; border-width:0px; border-spacing:2px; cell-border-width:1px; border-color:#a0a0a0; border-style:solid; background-color:none; head-row-background-color:none; alt-row-background-color:none;">
+    <para styleclass="Normal"><table rowcount="5" colcount="3" style="width:auto; cell-padding:1px; cell-spacing:2px; page-break-inside:auto; border-width:0px; border-spacing:2px; cell-border-width:1px; border-color:#a0a0a0; border-style:solid; background-color:none; head-row-background-color:none; alt-row-background-color:none;">
       <thead style="vertical-align:top">
         <td style="vertical-align:middle; width:51px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; font-weight:bold; vertical-align:baseline; color:#333333;" translate="true">Version</text></para>
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Version</text></para>
         </td>
-        <td style="vertical-align:middle; width:72px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; font-weight:bold; vertical-align:baseline; color:#333333;" translate="true">Date</text></para>
+        <td style="vertical-align:middle; width:133px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Date</text></para>
         </td>
-        <td style="vertical-align:middle; width:182px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; font-weight:bold; vertical-align:baseline; color:#333333;" translate="true">Notes</text></para>
+        <td style="vertical-align:middle; width:201px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Notes</text></para>
         </td>
       </thead>
       <tr style="vertical-align:top">
         <td style="vertical-align:middle; width:51px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">2.0</text></para>
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">2.0</text></para>
         </td>
-        <td style="vertical-align:middle; width:72px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">2014-09-08</text></para>
+        <td style="vertical-align:middle; width:133px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">2014-09-08</text></para>
         </td>
-        <td style="vertical-align:middle; width:182px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Release of Swagger 2.0</text></para>
-        </td>
-      </tr>
-      <tr style="vertical-align:top">
-        <td style="vertical-align:middle; width:51px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">1.2</text></para>
-        </td>
-        <td style="vertical-align:middle; width:72px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">2014-03-14</text></para>
-        </td>
-        <td style="vertical-align:middle; width:182px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Initial release of the formal document.</text></para>
+        <td style="vertical-align:middle; width:201px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Release of Swagger 2.0</text></para>
         </td>
       </tr>
       <tr style="vertical-align:top">
         <td style="vertical-align:middle; width:51px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">1.1</text></para>
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">1.2</text></para>
         </td>
-        <td style="vertical-align:middle; width:72px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">2012-08-22</text></para>
+        <td style="vertical-align:middle; width:133px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">2014-03-14</text></para>
         </td>
-        <td style="vertical-align:middle; width:182px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">Release of Swagger 1.1</text></para>
+        <td style="vertical-align:middle; width:201px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Initial release of the formal document.</text></para>
         </td>
       </tr>
       <tr style="vertical-align:top">
         <td style="vertical-align:middle; width:51px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">1.0</text></para>
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">1.1</text></para>
         </td>
-        <td style="vertical-align:middle; width:72px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">2011-08-10</text></para>
+        <td style="vertical-align:middle; width:133px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">2012-08-22</text></para>
         </td>
-        <td style="vertical-align:middle; width:182px; background-color:#ffffff;">
-          <para><text styleclass="Normal" style="font-size:7pt; vertical-align:baseline; color:#333333;" translate="true">First release of the Swagger Specification</text></para>
+        <td style="vertical-align:middle; width:201px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Release of Swagger 1.1</text></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="vertical-align:middle; width:51px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">1.0</text></para>
+        </td>
+        <td style="vertical-align:middle; width:133px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">2011-08-10</text></para>
+        </td>
+        <td style="vertical-align:middle; width:201px; background-color:#ffffff;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">First release of the Swagger Specification</text></para>
         </td>
       </tr>
     </table></para>
