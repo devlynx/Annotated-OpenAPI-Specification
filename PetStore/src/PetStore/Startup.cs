@@ -10,7 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.#endregion
+// limitations under the License.
 #endregion
 
 namespace PetStore
@@ -30,6 +30,7 @@ namespace PetStore
     public class Startup
     {
         private IHostingEnvironment env { get; set; }
+        const string apiVersion = "1.2.3";
 
         public Startup(IHostingEnvironment env)
         {
@@ -74,7 +75,7 @@ namespace PetStore
                 {
                     c.SingleApiVersion(new Info
                     {
-                        Version = "v1",
+                        Version = apiVersion,
                         Title = "Swagger Petstore",
                         Description = "This is a sample server Petstore server. You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). For this sample, you can use the api key 'special-key' to test the authorization filters.\n\nFind out more about Swagger",
                         TermsOfService = "http://swagger.io/terms/",
@@ -93,7 +94,6 @@ namespace PetStore
                     c.DescribeAllEnumsAsStrings();
                     c.IncludeXmlComments(GetXmlCommentsPath());
                     c.DocumentFilter<ApplySwaggerDocumentModifications>();
-
                 });
         }
 
@@ -116,7 +116,7 @@ namespace PetStore
             }
 
             app.UseSwagger();
-            app.UseSwaggerUi();
+            app.UseSwaggerUi(swaggerUrl: string.Format("/swagger/{0}/swagger.json", apiVersion));
         }
 
         private static string GetXmlCommentsPath()

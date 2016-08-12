@@ -5,6 +5,21 @@
   </topicref>
   <topicref type="topic" id="425919628784698" build="ALL" modified="2016-08-09T22:42:07.569Z" icon="0" href="SwaggerUI">
     <caption translate="true">SwaggerUI</caption>
+    <topicref type="topic" id="425936099134050" build="ALL" modified="2016-08-11T17:32:43.397Z" icon="0" href="Swagger-Header">
+      <caption translate="true">Swagger Header</caption>
+    </topicref>
+    <topicref type="topic" id="42594573758704" build="ALL" modified="2016-08-11T22:01:51.866Z" icon="0" href="Swagger-Path_Controller">
+      <caption translate="true">Swagger Path/Controller</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="425935284286578" build="ALL" modified="2016-08-11T18:18:07.094Z" icon="0">
+    <caption translate="true">Swashbuckle Code</caption>
+    <topicref type="topic" id="42591600022909" build="ALL" modified="2016-08-11T17:41:30.847Z" icon="0" href="Swashbuckle-Header">
+      <caption translate="true">Swashbuckle Header</caption>
+    </topicref>
+    <topicref type="topic" id="425940296965207" build="ALL" modified="2016-08-11T22:28:14.682Z" icon="0" href="Swashbuckle-Path_Controller">
+      <caption translate="true">Swashbuckle Path/Controller</caption>
+    </topicref>
   </topicref>
   <topicref type="topic" id="425886806032579" build="ALL" modified="2016-08-06T17:12:45.818Z" icon="0">
     <caption translate="true">Specification</caption>

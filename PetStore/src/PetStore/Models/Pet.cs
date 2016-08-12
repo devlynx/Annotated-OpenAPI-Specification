@@ -10,23 +10,38 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.#endregion
+// limitations under the License.
 #endregion
 
+using System;
 namespace PetStore
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     ///
     /// </summary>
     public class Pet
     {
+        /// <summary>
+        /// Automatically generated id in the form of a GUID
+        /// </summary>
+        /// <remarks>Some Remarks</remarks>
         [Required]
         public string id { get; set; }
 
+        /// <summary>
+        /// Pet Name
+        /// </summary>
+        /// <value>The name.</value>
         [Required]
-        [StringLength(60, MinimumLength = 5)]
+        [StringLength(60)]
         public string Name { get; set; }
+
+        [Required]
+        public Breed Breed { get; set; }
+
+        public string Optional { get; set; }
     }
 }

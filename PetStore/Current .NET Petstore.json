@@ -1,7 +1,7 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"version": "v1",
+		"version": "1.2.3",
 		"title": "Swagger Petstore",
 		"description": "This is a sample server Petstore server. You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). For this sample, you can use the api key 'special-key' to test the authorization filters.\n\nFind out more about Swagger",
 		"termsOfService": "http://swagger.io/terms/",
@@ -17,131 +17,22 @@
 	},
 	"basePath": "/",
 	"paths": {
-		"/api/incidents/{id}": {
-			"get": {
-				"tags": ["incidents"],
-				"summary": "Gets the specified Incident.",
-				"operationId": "ApiIncidentsByIdGet",
-				"consumes": [],
-				"produces": ["application/json"],
-				"parameters": [{
-					"name": "id",
-					"in": "path",
-					"description": "The identifier.",
-					"required": true,
-					"type": "string"
-				}],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"schema": {
-							"type": "string"
-						}
-					}
-				},
-				"deprecated": false
-			},
-			"put": {
-				"tags": ["incidents"],
-				"summary": "Updates all properties of a specific Incident",
-				"operationId": "ApiIncidentsByIdPut",
-				"consumes": ["application/json",
-				"text/json",
-				"application/json-patch+json"],
-				"produces": [],
-				"parameters": [{
-					"name": "id",
-					"in": "path",
-					"description": "The identifier.",
-					"required": true,
-					"type": "string",
-					"format": "uuid"
-				},
-				{
-					"name": "value",
-					"in": "body",
-					"description": "The value.",
-					"required": false,
-					"schema": {
-						"type": "string"
-					}
-				}],
-				"responses": {
-					"204": {
-						"description": "No Content"
-					}
-				},
-				"deprecated": false
-			},
-			"delete": {
-				"tags": ["incidents"],
-				"summary": "Deletes the specified Incident.",
-				"operationId": "ApiIncidentsByIdDelete",
-				"consumes": [],
-				"produces": [],
-				"parameters": [{
-					"name": "id",
-					"in": "path",
-					"description": "The identifier.",
-					"required": true,
-					"type": "string"
-				}],
-				"responses": {
-					"204": {
-						"description": "No Content"
-					}
-				},
-				"deprecated": false
-			}
-		},
-		"/api/incidents": {
-			"get": {
-				"tags": ["incidents"],
-				"summary": "Gets a list of Incidents.",
-				"operationId": "ApiIncidentsGet",
-				"consumes": [],
-				"produces": [],
-				"responses": {
-					"204": {
-						"description": "No Content"
-					},
-					"200": {
-						"description": "OK",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/Incident"
-							}
-						}
-					},
-					"400": {
-						"description": "BadRequest",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/Incident"
-							}
-						}
-					}
-				},
-				"deprecated": false
-			},
+		"/pets": {
 			"post": {
-				"tags": ["incidents"],
-				"summary": "Creates a new Incident",
-				"description": "## Example \r\n             \r\n                POST /incidents \r\n                { \r\n                    \"id\": \"123\", \r\n                    \"description\": \"Some product\" \r\n                }",
-				"operationId": "ApiIncidentsPost",
+				"tags": ["pets"],
+				"summary": "Add a new pet to the store",
+				"operationId": "addPet",
 				"consumes": ["application/json",
 				"text/json",
 				"application/json-patch+json"],
 				"produces": [],
 				"parameters": [{
-					"name": "value",
+					"name": "body",
 					"in": "body",
-					"description": "The value.",
+					"description": "Pet object that needs to be added to the store",
 					"required": false,
 					"schema": {
-						"type": "string"
+						"$ref": "#/definitions/Pet"
 					}
 				}],
 				"responses": {
@@ -149,9 +40,16 @@
 						"description": "No Content"
 					},
 					"201": {
-						"description": "Created",
+						"description": "Pet Created"
+					},
+					"400": {
+						"description": "Invalid Data",
 						"schema": {
-							"$ref": "#/definitions/Incident"
+							"$ref": "#/definitions/JSendBuilder[List[InvalidProperty]]"
+						},
+						"examples": {
+							"Name": "Name cannot be blank ",
+							"Other": "Description of another problem"
 						}
 					}
 				},
@@ -160,37 +58,71 @@
 		}
 	},
 	"definitions": {
-		"Incident": {
-			"required": ["jurisdiction",
-			"name"],
+		"Pet": {
+			"description": "",
+			"required": ["id",
+			"name",
+			"breed"],
 			"type": "object",
 			"properties": {
 				"id": {
-					"type": "string"
-				},
-				"jurisdiction": {
-					"maxLength": 60,
-					"minLength": 3,
+					"description": "Automatically generated id in the form of a GUID",
 					"type": "string"
 				},
 				"name": {
-					"description": "Incident Name",
+					"description": "Pet Name",
 					"maxLength": 60,
-					"minLength": 5,
+					"minLength": 0,
 					"type": "string"
 				},
-				"createdTime": {
-					"format": "date-time",
+				"breed": {
+					"enum": ["RoughCollie",
+					"Poodle",
+					"Mixed"],
 					"type": "string"
 				},
-				"lastUpdatedTime": {
-					"format": "date-time",
+				"optional": {
+					"type": "string"
+				}
+			}
+		},
+		"JSendBuilder[List[InvalidProperty]]": {
+			"required": ["status"],
+			"type": "object",
+			"properties": {
+				"code": {
+					"description": "Only for status code: A numeric code corresponding to the error, if applicable",
 					"type": "string"
 				},
-				"createdBy": {
+				"data": {
+					"description": "**For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.\r\n            **For status fail:** A wrapper for the details of why the request failed.\r\n            **For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/InvalidProperty"
+					}
+				},
+				"message": {
+					"description": "Only for status error: A meaningful, end-user-readable message, explaining what went wrong.",
 					"type": "string"
 				},
-				"lastUpdatedBy": {
+				"status": {
+					"description": "Status of the response",
+					"enum": ["success",
+					"fail",
+					"error"],
+					"type": "string"
+				}
+			}
+		},
+		"InvalidProperty": {
+			"type": "object",
+			"properties": {
+				"property": {
+					"description": "Property name that has a problem.",
+					"type": "string"
+				},
+				"validationError": {
+					"description": "What is wrong with this property?",
 					"type": "string"
 				}
 			}
@@ -198,5 +130,17 @@
 	},
 	"securityDefinitions": {
 		
-	}
+	},
+	"tags": [{
+		"name": "pets",
+		"description": "Everything about your Pets"
+	},
+	{
+		"name": "store",
+		"description": "Access to Petstore orders"
+	},
+	{
+		"name": "users",
+		"description": "Operations about users"
+	}]
 }

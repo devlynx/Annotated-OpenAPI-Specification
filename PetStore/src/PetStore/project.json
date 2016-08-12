@@ -18,10 +18,9 @@
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
     "Newtonsoft.Json": "9.0.1",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-    "Serilog": "2.1.0",
-    "Serilog.Sinks.RollingFile": "2.2.0",
+    "Serilog": "2.2.0-dev-00690",
     "Swashbuckle": "6.0.0-beta901",
-  },
+    "Serilog.Sinks.RollingFile": "2.1.1-dev-00724"},
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
   },
