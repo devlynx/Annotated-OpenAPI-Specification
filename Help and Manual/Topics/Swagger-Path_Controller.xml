@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="mreit" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Swagger Path/Controller</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Swagger Path/Controller</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="OpeningScreen Controllers.PNG" scale="75.00%" width="1440" height="686" styleclass="Image Caption"><title translate="true">Swagger Controllers</title><imagemap><area shape="rect" coords="253,356,437,405" type="topiclink" href="Swagger-Object" anchor="SWAGGERPATHS"/><area shape="rect" coords="452,356,551,405" type="topiclink" href="Swashbuckle-Path_Controller" anchor="PatOrResource"/><area shape="rect" coords="655,341,966,390" type="topiclink" href="Tag-Object" anchor="TAGDESCRIPTION"/><area shape="rect" coords="978,343,1066,392" type="topiclink" href="Swashbuckle-Path_Controller" anchor="tags.description"/></imagemap></image></para>
+  </body>
+</topic>

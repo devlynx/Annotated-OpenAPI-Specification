@@ -10,15 +10,14 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.#endregion
+// limitations under the License.
 #endregion
 
 namespace PetStore
 {
-    using Swashbuckle.SwaggerGen.Generator;
-    using Swashbuckle.Swagger.Model;
-    using System;
     using System.Collections.Generic;
+    using Swashbuckle.Swagger.Model;
+    using Swashbuckle.SwaggerGen.Generator;
 
     internal class ApplySwaggerDocumentModifications : IDocumentFilter
     {
@@ -30,7 +29,7 @@ namespace PetStore
 
         private void SetInfoVersion(SwaggerDocument swaggerDocument)
         {
-            swaggerDocument.Info.Version = "1.0.7";
+            //swaggerDocument.Info.Version = "1.0.7";
         }
 
         private void AddControllerTags(SwaggerDocument swaggerDocument)

@@ -10,7 +10,7 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
-// limitations under the License.#endregion
+// limitations under the License.
 #endregion
 
 namespace PetStore
@@ -21,12 +21,6 @@ namespace PetStore
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.SwaggerGen.Annotations;
 
-    /// <summary>
-    /// Everything about your Pets summary
-    /// </summary>
-    /// <example>Everything about your Pets Example</example>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
-    /// <remarks>Everything about your Pets remartks</remarks>
     [Route("api/[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
