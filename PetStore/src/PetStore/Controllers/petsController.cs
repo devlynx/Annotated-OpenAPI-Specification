@@ -18,7 +18,6 @@ namespace PetStore
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Net;
     using MicroserviceBoilerplate;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.SwaggerGen.Annotations;
@@ -35,94 +34,81 @@ namespace PetStore
         /// <summary>
         /// Add a new pet to the store
         /// </summary>
-        /// <param name="body">Pet object that needs to be added to the store</param>
+
+        /// <response code="400">Pet data is invalid</response> 
+        /// <response code="201">Returns the newly created pet id</response> 
+
+        /// <param name="pet">Pet to be added to the store</param>
         [HttpPost]
         [Produces("application/json")]
         [SwaggerOperation(OperationId = "addPet")]
-        [SwaggerResponse(HttpStatusCode.Created, Description = "Pet Created")]
-        [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(JSend<List<Tuple<string, string>>>), 
-            Description = "Request data is invalid or improperly formated")]
-        public void Create([FromBody, Required]Pet body)
+        [ProducesResponseType(typeof(JSend<IdResponse>), 201)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        public IActionResult Create([FromBody, Required]Pet pet)
         {
-            return;
+            return Ok("value");
         }
 
+        /// <summary>
+        /// Finds Pets by tags
+        /// </summary>
 
+        /// <remarks>
+        /// Will be depricated in version 3. Muliple tags can be provided with comma separated strings. Must have at least 1 tag in the request.
+        /// </remarks>
 
+        /// <response code="400">Tag data is invalid</response> 
+        /// <response code="200">successful operation</response> 
+        /// <param name="tags">Tags to filter by</param>
+        [Produces("application/json")]
+        [HttpGet("/pet/findByTags")]
+        [ProducesResponseType(typeof(JSend<IEnumerable<Pet>>), 200)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        [Obsolete]
+        public IActionResult Get([FromQuery, Required]string tags)
+        {
+            return Ok("value");
+        }
 
-        /*
-                /// <summary>
-                /// Deletes the specified Incident.
-                /// </summary>
-                /// <param name="id">The identifier.</param>
-                [Produces("application/json")]
-                [HttpDelete("{id}")]
-                public void Delete(string id)
-                {
-                    return;
-                }
+        /// <summary>
+        /// Updates a pet in the store with form data
+        /// </summary>
 
-                // GET api/owners
-                /// <summary>
-                /// Gets a list of Incidents.
-                /// </summary>
-                /// <returns>IEnumerable&lt;System.String&gt;.</returns>
-                [Produces("application/json")]
-                [HttpGet]
-                [SwaggerResponse(HttpStatusCode.OK, Type = typeof(IEnumerable<Pet>))]
-                [SwaggerResponse(HttpStatusCode.BadRequest, Type = typeof(IEnumerable<Pet>))]
-                public IActionResult Get()
-                {
-                    return Ok("value");
-                }
+        /// <response code="400">Invalid ID supplied</response> 
+        /// <response code="200">successful operation</response> 
+        /// <response code="404">Pet not found</response> 
 
-                // GET api/owners/5
-                /// <summary>
-                /// Gets the specified Incident.
-                /// </summary>
-                /// <param name="id">The identifier.</param>
-                /// <returns>System.String.</returns>
-                [Produces("application/json")]
-                [HttpGet("{id}")]
-                public string Get(string id)
-                {
-                    return "value";
-                }
+        /// <param name="id">ID of pet that needs to be updated</param>
+        /// <param name="name">Updated name of the pet</param>
+        /// <param name="status">Updated status of the pet</param>
+        [Produces("application/json")]
+        [HttpPut("{id}")]
+        [ProducesResponseType(typeof(JSend<>), 200)]
+        [ProducesResponseType(typeof(JSend<>), 404)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        public IActionResult UpdateReplace([Required] string id, [FromForm]string name, [FromForm]string status)
+        {
+            return Ok("value");
+        }
 
-                /// <summary>
-                /// Creates a new Incident
-                /// </summary>
-                /// <remarks> 
-                /// ## Example 
-                ///  
-                ///     POST /incidents 
-                ///     { 
-                ///         "id": "123", 
-                ///         "description": "Some product" 
-                ///     } 
-                ///  
-                /// </remarks> 
-                /// <param name="value">The value.</param>
-                [Produces("application/json")]
-                [HttpPost]
-                [SwaggerResponse(HttpStatusCode.Created, Type = typeof(Pet))]
-                public void Create([FromBody]string value)
-                {
-                    return;
-                }
+        /// <summary>
+        /// Deletes a pet
+        /// </summary>
 
-                // PUT api/owners/5
-                /// <summary>
-                /// Updates all properties of a specific Incident
-                /// </summary>
-                /// <param name="id">The identifier.</param>
-                /// <param name="value">The value.</param>
-                [Produces("application/json")]
-                [HttpPut("{id}")]
-                public void UpdateReplace(Guid id, [FromBody]string value)
-                {
-                    return;
-                }
-        */
+        /// <response code="400">Invalid ID supplied</response> 
+        /// <response code="200">successful operation</response> 
+        /// <response code="404">Pet not found</response> 
+
+        /// <param name="id">Pet id to delete</param>
+        /// <param name="api_key"></param>
+        [Produces("application/json")]
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(JSend<>), 200)]
+        [ProducesResponseType(typeof(JSend<>), 404)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        public IActionResult Delete([Required, FromHeader] string api_key, [Required] string id)
+        {
+            return Ok("value");
+        }
     }
 }

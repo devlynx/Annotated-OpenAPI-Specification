@@ -13,9 +13,9 @@
 // limitations under the License.
 #endregion
 
-using System;
 namespace PetStore
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.Runtime.InteropServices;
 
@@ -42,6 +42,6 @@ namespace PetStore
         [Required]
         public Breed Breed { get; set; }
 
-        public string Optional { get; set; }
+        public string Tags { get; set; }
     }
 }

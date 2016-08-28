@@ -17,27 +17,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
-// For more information about JSend see: http://labs.omniti.com/labs/jsend
-
-namespace MicroserviceBoilerplate
+namespace PetStore
 {
-    using System;
-
-    public enum JSendStatus
+    public class IdResponse
     {
-        /// <summary>
-        /// All went well, and (usually) some data is returned
-        /// </summary>
-        success,
-
-        /// <summary>
-        /// There was a problem with the data submitted, or some precondition of the API call was not satisfied 
-        /// </summary>
-        fail,
-
-        /// <summary>
-        /// An error occurred in processing the request, e.g. an exception was thrown
-        /// </summary>
-        error
+        public string id { get; set; }
     }
 }

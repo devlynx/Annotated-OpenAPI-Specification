@@ -29,8 +29,9 @@ namespace PetStore
 
     public class Startup
     {
+        private const string apiVersion = "1.2.3";
+
         private IHostingEnvironment env { get; set; }
-        const string apiVersion = "1.2.3";
 
         public Startup(IHostingEnvironment env)
         {
@@ -115,7 +116,7 @@ namespace PetStore
                 //app.UseBrowserLink();
             }
 
-            app.UseSwagger();
+            app.UseSwagger("swagger/{apiVersion}/swagger.json");
             app.UseSwaggerUi(swaggerUrl: string.Format("/swagger/{0}/swagger.json", apiVersion));
         }
 

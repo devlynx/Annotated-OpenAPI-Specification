@@ -15,20 +15,30 @@
 
 namespace PetStore
 {
-    using System.Linq;
+    using System;
     using System.Collections.Generic;
-    using Swashbuckle.Swagger.Model;
-    using Swashbuckle.SwaggerGen.Generator;
+    using System.Linq;
     using MicroserviceBoilerplate;
     using Newtonsoft.Json;
-    using System;
+    using Swashbuckle.Swagger.Model;
+    using Swashbuckle.SwaggerGen.Generator;
 
     internal class ApplySwaggerDocumentModifications : IDocumentFilter
     {
         public void Apply(SwaggerDocument swaggerDocument, DocumentFilterContext context)
         {
             AddControllerTags(swaggerDocument);
-            AddSchemaExamples(swaggerDocument, context);
+            
+            // if you want to set the base path manually, use this...
+            SetBasePath(swaggerDocument, "/v2");
+
+            // response examples are not supported by Swagger-ui so we comment them out for now...
+            // AddResponseExamples(swaggerDocument, context);
+        }
+
+        private void SetBasePath(SwaggerDocument swaggerDocument, string basePath)
+        {
+            swaggerDocument.BasePath = basePath;
         }
 
         private void AddControllerTags(SwaggerDocument swaggerDocument)
@@ -39,7 +49,8 @@ namespace PetStore
             swaggerDocument.Tags.Add(new Tag() { Name = "store", Description = "Access to Petstore orders" });
             swaggerDocument.Tags.Add(new Tag() { Name = "users", Description = "Operations about users" });
         }
-        private void AddSchemaExamples(SwaggerDocument swaggerDocument, DocumentFilterContext context)
+
+        private void AddResponseExamples(SwaggerDocument swaggerDocument, DocumentFilterContext context)
         {
             PathItem pathItem = (from path in swaggerDocument.Paths
                                  where path.Key == "/pets"
@@ -50,19 +61,22 @@ namespace PetStore
                                         where r.Key == "400"
                                         select r.Value).FirstOrDefault<Response>();
 
-                List<Tuple<string, string>> data = null;
-                data = new List<Tuple<string, string>>() {
+                if (invalidData != null)
+                {
+                    List<Tuple<string, string>> data = null;
+                    data = new List<Tuple<string, string>>() {
                           new Tuple<string, string>("Name", "Name cannot be blank"),
-                          new Tuple<string, string>("Name", "Name cannot contain whitespace characters only"),
+                          new Tuple<string, string>("Name", "Name cannot contain only whitespace characters"),
                           new Tuple<string, string>("ID", "id must be in a GUID form")
                      };
 
-                string jsend = JsonConvert.SerializeObject(new JSend<List<Tuple<string, string>>>()
-                    .Error()
-                    .Message("Request contained invalid data")
-                    .Data(data));
+                    string jsend = JsonConvert.SerializeObject(new JSend<List<Tuple<string, string>>>()
+                        .Error()
+                        .Message("Request contained invalid data")
+                        .Data(data));
 
-                invalidData.Examples = data;
+                    invalidData.Examples = data;
+                }
             }
         }
     }

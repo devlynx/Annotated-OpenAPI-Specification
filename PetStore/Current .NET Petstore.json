@@ -15,7 +15,7 @@
 			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
 		}
 	},
-	"basePath": "/",
+	"basePath": "/v2",
 	"paths": {
 		"/pets": {
 			"post": {
@@ -25,31 +25,152 @@
 				"consumes": ["application/json",
 				"text/json",
 				"application/json-patch+json"],
-				"produces": [],
+				"produces": ["application/json"],
 				"parameters": [{
-					"name": "body",
+					"name": "pet",
 					"in": "body",
-					"description": "Pet object that needs to be added to the store",
+					"description": "Pet to be added to the store",
 					"required": false,
 					"schema": {
 						"$ref": "#/definitions/Pet"
 					}
 				}],
 				"responses": {
-					"204": {
-						"description": "No Content"
-					},
 					"201": {
-						"description": "Pet Created"
+						"description": "Returns the newly created pet id",
+						"schema": {
+							"$ref": "#/definitions/JSend[IdResponse]"
+						}
 					},
 					"400": {
-						"description": "Invalid Data",
+						"description": "Pet data is invalid",
 						"schema": {
-							"$ref": "#/definitions/JSendBuilder[List[InvalidProperty]]"
-						},
-						"examples": {
-							"Name": "Name cannot be blank ",
-							"Other": "Description of another problem"
+							"$ref": "#/definitions/JSend[IEnumerable[Tuple[String,String]]]"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/pet/findByTags": {
+			"get": {
+				"tags": ["pets"],
+				"summary": "Finds Pets by tags",
+				"description": "Will be depricated in version 3. Muliple tags can be provided with comma separated strings. Must have at least 1 tag in the request.",
+				"operationId": "PetFindByTagsGet",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "tags",
+					"in": "query",
+					"description": "Tags to filter by",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$ref": "#/definitions/JSend[IEnumerable[Pet]]"
+						}
+					},
+					"400": {
+						"description": "Tag data is invalid",
+						"schema": {
+							"$ref": "#/definitions/JSend[IEnumerable[Tuple[String,String]]]"
+						}
+					}
+				},
+				"deprecated": true
+			}
+		},
+		"/pets/{id}": {
+			"put": {
+				"tags": ["pets"],
+				"summary": "Updates a pet in the store with form data",
+				"operationId": "PetsByIdPut",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "ID of pet that needs to be updated",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "name",
+					"in": "form",
+					"description": "Updated name of the pet",
+					"required": false,
+					"type": "string"
+				},
+				{
+					"name": "status",
+					"in": "form",
+					"description": "Updated status of the pet",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$ref": "#/definitions/JSend[T]"
+						}
+					},
+					"404": {
+						"description": "Pet not found",
+						"schema": {
+							"$ref": "#/definitions/JSend[T]"
+						}
+					},
+					"400": {
+						"description": "Invalid ID supplied",
+						"schema": {
+							"$ref": "#/definitions/JSend[IEnumerable[Tuple[String,String]]]"
+						}
+					}
+				},
+				"deprecated": false
+			},
+			"delete": {
+				"tags": ["pets"],
+				"summary": "Deletes a pet",
+				"operationId": "PetsByIdDelete",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "api_key",
+					"in": "header",
+					"description": "",
+					"required": false,
+					"type": "string"
+				},
+				{
+					"name": "id",
+					"in": "path",
+					"description": "Pet id to delete",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"$ref": "#/definitions/JSend[T]"
+						}
+					},
+					"404": {
+						"description": "Pet not found",
+						"schema": {
+							"$ref": "#/definitions/JSend[T]"
+						}
+					},
+					"400": {
+						"description": "Invalid ID supplied",
+						"schema": {
+							"$ref": "#/definitions/JSend[IEnumerable[Tuple[String,String]]]"
 						}
 					}
 				},
@@ -81,12 +202,12 @@
 					"Mixed"],
 					"type": "string"
 				},
-				"optional": {
+				"tags": {
 					"type": "string"
 				}
 			}
 		},
-		"JSendBuilder[List[InvalidProperty]]": {
+		"JSend[IdResponse]": {
 			"required": ["status"],
 			"type": "object",
 			"properties": {
@@ -95,10 +216,43 @@
 					"type": "string"
 				},
 				"data": {
-					"description": "**For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.\r\n            **For status fail:** A wrapper for the details of why the request failed.\r\n            **For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc",
+					"$ref": "#/definitions/IdResponse",
+					"description": "**For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.\r\n**For status fail:** A wrapper for the details of why the request failed.\r\n**For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc"
+				},
+				"message": {
+					"description": "Only for status error: A meaningful, end-user-readable message, explaining what went wrong.",
+					"type": "string"
+				},
+				"status": {
+					"description": "Status of the response",
+					"enum": ["success",
+					"fail",
+					"error"],
+					"type": "string"
+				}
+			}
+		},
+		"IdResponse": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				}
+			}
+		},
+		"JSend[IEnumerable[Tuple[String,String]]]": {
+			"required": ["status"],
+			"type": "object",
+			"properties": {
+				"code": {
+					"description": "Only for status code: A numeric code corresponding to the error, if applicable",
+					"type": "string"
+				},
+				"data": {
+					"description": "**For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.\r\n**For status fail:** A wrapper for the details of why the request failed.\r\n**For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc",
 					"type": "array",
 					"items": {
-						"$ref": "#/definitions/InvalidProperty"
+						"$ref": "#/definitions/Tuple[String,String]"
 					}
 				},
 				"message": {
@@ -114,17 +268,76 @@
 				}
 			}
 		},
-		"InvalidProperty": {
+		"Tuple[String,String]": {
 			"type": "object",
 			"properties": {
-				"property": {
-					"description": "Property name that has a problem.",
+				"item1": {
+					"type": "string",
+					"readOnly": true
+				},
+				"item2": {
+					"type": "string",
+					"readOnly": true
+				}
+			}
+		},
+		"JSend[IEnumerable[Pet]]": {
+			"required": ["status"],
+			"type": "object",
+			"properties": {
+				"code": {
+					"description": "Only for status code: A numeric code corresponding to the error, if applicable",
 					"type": "string"
 				},
-				"validationError": {
-					"description": "What is wrong with this property?",
+				"data": {
+					"description": "**For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.\r\n**For status fail:** A wrapper for the details of why the request failed.\r\n**For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Pet"
+					}
+				},
+				"message": {
+					"description": "Only for status error: A meaningful, end-user-readable message, explaining what went wrong.",
+					"type": "string"
+				},
+				"status": {
+					"description": "Status of the response",
+					"enum": ["success",
+					"fail",
+					"error"],
 					"type": "string"
 				}
+			}
+		},
+		"JSend[T]": {
+			"required": ["status"],
+			"type": "object",
+			"properties": {
+				"code": {
+					"description": "Only for status code: A numeric code corresponding to the error, if applicable",
+					"type": "string"
+				},
+				"data": {
+					"$ref": "#/definitions/T",
+					"description": "**For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.\r\n**For status fail:** A wrapper for the details of why the request failed.\r\n**For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc"
+				},
+				"message": {
+					"description": "Only for status error: A meaningful, end-user-readable message, explaining what went wrong.",
+					"type": "string"
+				},
+				"status": {
+					"description": "Status of the response",
+					"enum": ["success",
+					"fail",
+					"error"],
+					"type": "string"
+				}
+			}
+		},
+		"T": {
+			"type": "object",
+			"properties": {
+				
 			}
 		}
 	},

@@ -17,6 +17,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #endregion
 
+// For more information about JSend see: http://labs.omniti.com/labs/jsend
+
 namespace MicroserviceBoilerplate
 {
     using System;
