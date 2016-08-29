@@ -27,10 +27,10 @@ namespace PetStore
     {
         public void Apply(SwaggerDocument swaggerDocument, DocumentFilterContext context)
         {
-            AddControllerTags(swaggerDocument);
-            
+            AddControllerTagDescriptions(swaggerDocument);
+
             // if you want to set the base path manually, use this...
-            SetBasePath(swaggerDocument, "/v2");
+            SetBasePath(swaggerDocument, "/v1");
 
             // response examples are not supported by Swagger-ui so we comment them out for now...
             // AddResponseExamples(swaggerDocument, context);
@@ -41,13 +41,11 @@ namespace PetStore
             swaggerDocument.BasePath = basePath;
         }
 
-        private void AddControllerTags(SwaggerDocument swaggerDocument)
+        private void AddControllerTagDescriptions(SwaggerDocument swaggerDocument)
         {
             if (swaggerDocument.Tags == null)
                 swaggerDocument.Tags = new List<Tag>();
             swaggerDocument.Tags.Add(new Tag() { Name = "pets", Description = "Everything about your Pets" });
-            swaggerDocument.Tags.Add(new Tag() { Name = "store", Description = "Access to Petstore orders" });
-            swaggerDocument.Tags.Add(new Tag() { Name = "users", Description = "Operations about users" });
         }
 
         private void AddResponseExamples(SwaggerDocument swaggerDocument, DocumentFilterContext context)
@@ -81,3 +79,32 @@ namespace PetStore
         }
     }
 }
+
+
+
+//namespace PetStore
+//{
+//    using System;
+//    using System.Collections.Generic;
+//    using System.Linq;
+//    using MicroserviceBoilerplate;
+//    using Newtonsoft.Json;
+//    using Swashbuckle.Swagger.Model;
+//    using Swashbuckle.SwaggerGen.Generator;
+
+//    internal class ApplySwaggerDocumentModifications : IDocumentFilter
+//    {
+//        public void Apply(SwaggerDocument swaggerDocument, DocumentFilterContext context)
+//        {
+//            AddControllerTagDescriptions(swaggerDocument);
+
+//        }
+
+//        private void AddControllerTagDescriptions(SwaggerDocument swaggerDocument)
+//        {
+//            if (swaggerDocument.Tags == null)
+//                swaggerDocument.Tags = new List<Tag>();
+//            swaggerDocument.Tags.Add(new Tag() { Name = "pets", Description = "Everything about your Pets" });
+//        }
+//    }
+//}

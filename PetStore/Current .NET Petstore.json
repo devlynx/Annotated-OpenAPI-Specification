@@ -15,7 +15,7 @@
 			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
 		}
 	},
-	"basePath": "/v2",
+	"basePath": "/",
 	"paths": {
 		"/pets": {
 			"post": {
@@ -29,7 +29,7 @@
 				"parameters": [{
 					"name": "pet",
 					"in": "body",
-					"description": "Pet to be added to the store",
+					"description": "**Pet to be added to the store**",
 					"required": false,
 					"schema": {
 						"$ref": "#/definitions/Pet"
@@ -55,8 +55,8 @@
 		"/pet/findByTags": {
 			"get": {
 				"tags": ["pets"],
-				"summary": "Finds Pets by tags",
-				"description": "Will be depricated in version 3. Muliple tags can be provided with comma separated strings. Must have at least 1 tag in the request.",
+				"summary": "Finds pets by tags",
+				"description": "Will be deprecated in version 3. Multiple tags can be provided with comma separated strings. Must have at least 1 tag in the request.",
 				"operationId": "PetFindByTagsGet",
 				"consumes": [],
 				"produces": ["application/json"],
@@ -347,13 +347,5 @@
 	"tags": [{
 		"name": "pets",
 		"description": "Everything about your Pets"
-	},
-	{
-		"name": "store",
-		"description": "Access to Petstore orders"
-	},
-	{
-		"name": "users",
-		"description": "Operations about users"
 	}]
 }

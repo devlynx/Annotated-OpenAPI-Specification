@@ -25,11 +25,7 @@ namespace PetStore
     [Route("[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
-    {
-        public petsController() : base()
-        {
-            return;
-        }
+    { 
 
         /// <summary>
         /// Add a new pet to the store
@@ -38,7 +34,7 @@ namespace PetStore
         /// <response code="400">Pet data is invalid</response> 
         /// <response code="201">Returns the newly created pet id</response> 
 
-        /// <param name="pet">Pet to be added to the store</param>
+        /// <param name="pet">**Pet to be added to the store**</param>
         [HttpPost]
         [Produces("application/json")]
         [SwaggerOperation(OperationId = "addPet")]
@@ -50,11 +46,31 @@ namespace PetStore
         }
 
         /// <summary>
-        /// Finds Pets by tags
+        /// Deletes a pet
+        /// </summary>
+
+        /// <response code="400">Invalid ID supplied</response> 
+        /// <response code="200">successful operation</response> 
+        /// <response code="404">Pet not found</response> 
+
+        /// <param name="id">Pet id to delete</param>
+        /// <param name="api_key"></param>
+        [Produces("application/json")]
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(JSend<>), 200)]
+        [ProducesResponseType(typeof(JSend<>), 404)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        public IActionResult Delete([Required, FromHeader] string api_key, [Required] string id)
+        {
+            return Ok("value");
+        }
+
+        /// <summary>
+        /// Finds pets by tags
         /// </summary>
 
         /// <remarks>
-        /// Will be depricated in version 3. Muliple tags can be provided with comma separated strings. Must have at least 1 tag in the request.
+        /// Will be deprecated in version 3. Multiple tags can be provided with comma separated strings. Must have at least 1 tag in the request.
         /// </remarks>
 
         /// <response code="400">Tag data is invalid</response> 
@@ -87,26 +103,6 @@ namespace PetStore
         [ProducesResponseType(typeof(JSend<>), 404)]
         [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
         public IActionResult UpdateReplace([Required] string id, [FromForm]string name, [FromForm]string status)
-        {
-            return Ok("value");
-        }
-
-        /// <summary>
-        /// Deletes a pet
-        /// </summary>
-
-        /// <response code="400">Invalid ID supplied</response> 
-        /// <response code="200">successful operation</response> 
-        /// <response code="404">Pet not found</response> 
-
-        /// <param name="id">Pet id to delete</param>
-        /// <param name="api_key"></param>
-        [Produces("application/json")]
-        [HttpDelete("{id}")]
-        [ProducesResponseType(typeof(JSend<>), 200)]
-        [ProducesResponseType(typeof(JSend<>), 404)]
-        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
-        public IActionResult Delete([Required, FromHeader] string api_key, [Required] string id)
         {
             return Ok("value");
         }

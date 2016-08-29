@@ -15,9 +15,7 @@
 
 namespace PetStore
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Runtime.InteropServices;
 
     /// <summary>
     ///

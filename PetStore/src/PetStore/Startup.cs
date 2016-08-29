@@ -31,18 +31,14 @@ namespace PetStore
     {
         private const string apiVersion = "1.2.3";
 
-        private IHostingEnvironment env { get; set; }
-
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment hostingEnvironment)
         {
-            this.env = env;
-
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(hostingEnvironment.ContentRootPath)
                 .AddJsonFile("appsettings.json", true, true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName.ToLower()}.json", true);
+                .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName.ToLower()}.json", true);
 
-            if (env.IsEnvironment("Development"))
+            if (hostingEnvironment.IsEnvironment("Development"))
             {
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
@@ -99,7 +95,7 @@ namespace PetStore
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment hostingEnvironment, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -109,7 +105,7 @@ namespace PetStore
             app.UseCors(option => option.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseStaticFiles();
 
-            if (env.IsDevelopment())
+            if (hostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 //app.UseDatabaseErrorPage();
