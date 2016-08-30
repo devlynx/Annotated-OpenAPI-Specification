@@ -89,6 +89,10 @@ namespace PetStore
         /// <summary>
         /// Updates a pet in the store with form data
         /// </summary>
+        
+        /// <remarks>
+        /// For the parameter status, provide multiple values in new lines.
+        /// </remarks>
 
         /// <response code="400">Invalid ID supplied</response> 
         /// <response code="200">successful operation</response> 
@@ -102,7 +106,7 @@ namespace PetStore
         [ProducesResponseType(typeof(JSend<>), 200)]
         [ProducesResponseType(typeof(JSend<>), 404)]
         [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
-        public IActionResult UpdateReplace([Required] string id, [FromForm]string name, [FromBody]List<string> status)
+        public IActionResult UpdateReplace([Required] string id, [FromForm]string name, [FromForm]List<string> status)
         {
             return Ok("value");
         }
