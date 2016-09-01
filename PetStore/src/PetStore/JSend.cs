@@ -95,19 +95,18 @@ namespace MicroserviceBoilerplate
         }
 
         /// <summary>
-        /// Only for status code: A numeric code corresponding to the error, if applicable
+        /// Only for status **error**: An optional numeric code corresponding to the error, if applicable
         /// </summary>
         public string code { get; set; }
 
         /// <summary>
-        /// **For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.
-        /// **For status fail:** A wrapper for the details of why the request failed.
-        /// **For status error:** A wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc
-        /// </summary>
+        /// - **For status success:** A wrapper for any data returned by the API call. If the call returns no data, data will be set to null.
+        /// - **For status fail:** A wrapper for the details of why the request failed.
+        /// - **For status error:** An optional wrapper for any other information about the error, e.g. the conditions that caused the error, stack traces, etc</summary>
         public T data { get; set; }
 
         /// <summary>
-        /// Only for status error: A meaningful, end-user-readable message, explaining what went wrong.
+        /// Only for status **error**: A meaningful, end-user-readable message, explaining what went wrong.
         /// </summary>
         public string message { get; set; }
 

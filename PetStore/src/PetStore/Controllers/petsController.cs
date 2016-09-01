@@ -39,7 +39,7 @@ namespace PetStore
         [Produces("application/json")]
         [SwaggerOperation(OperationId = "addPet")]
         [ProducesResponseType(typeof(JSend<IdResponse>), 201)]
-        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<InvalidProperty>>), 400)]
         public IActionResult Create([FromBody, Required]Pet pet)
         {
             return Ok("value");
@@ -55,11 +55,12 @@ namespace PetStore
 
         /// <param name="id">Pet id to delete</param>
         /// <param name="api_key"></param>
+
         [Produces("application/json")]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(JSend<>), 200)]
         [ProducesResponseType(typeof(JSend<>), 404)]
-        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<InvalidProperty>>), 400)]
         public IActionResult Delete([Required, FromHeader] string api_key, [Required] string id)
         {
             return Ok("value");
@@ -70,16 +71,18 @@ namespace PetStore
         /// </summary>
 
         /// <remarks>
-        /// Will be deprecated in version 3. Multiple tags can be provided with comma separated strings. Must have at least 1 tag in the request.
+        /// Will be removed in version 3. Multiple tags can be provided with comma separated strings. Must have at least 1 tag in the request.
         /// </remarks>
 
         /// <response code="400">Tag data is invalid</response> 
         /// <response code="200">successful operation</response> 
+ 
         /// <param name="tags">Tags to filter by</param>
+ 
         [Produces("application/json")]
         [HttpGet("/pet/findByTags")]
         [ProducesResponseType(typeof(JSend<IEnumerable<Pet>>), 200)]
-        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<InvalidProperty>>), 400)]
         [Obsolete]
         public IActionResult Get([FromQuery, Required]string tags)
         {
@@ -89,7 +92,7 @@ namespace PetStore
         /// <summary>
         /// Updates a pet in the store with form data
         /// </summary>
-        
+
         /// <remarks>
         /// For the parameter status, provide multiple values in new lines.
         /// </remarks>
@@ -101,11 +104,12 @@ namespace PetStore
         /// <param name="id">ID of pet that needs to be updated</param>
         /// <param name="name">Updated name of the pet</param>
         /// <param name="status">Updated status of the pet</param>
+
         [Produces("application/json")]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(JSend<>), 200)]
         [ProducesResponseType(typeof(JSend<>), 404)]
-        [ProducesResponseType(typeof(JSend<IEnumerable<Tuple<string, string>>>), 400)]
+        [ProducesResponseType(typeof(JSend<IEnumerable<InvalidProperty>>), 400)]
         public IActionResult UpdateReplace([Required] string id, [FromForm]string name, [FromForm]List<string> status)
         {
             return Ok("value");

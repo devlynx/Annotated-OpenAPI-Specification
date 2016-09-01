@@ -15,6 +15,7 @@
 
 namespace PetStore
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     /// <summary>
@@ -37,9 +38,15 @@ namespace PetStore
         [StringLength(60)]
         public string Name { get; set; }
 
-        [Required]
+        /// <summary>
+        /// Canine Breed.
+        /// </summary>       
+       [Required]
         public Breed Breed { get; set; }
 
-        public string Tags { get; set; }
+        /// <summary>
+        /// A list of tags used for filtering pets.
+        /// </summary>
+        public List<string> Tags { get; set; }
     }
 }

@@ -21,6 +21,9 @@ namespace PetStore
 {
     public class IdResponse
     {
-        public string id { get; set; }
+        /// <summary>
+        /// An GUID identifier for the response
+        /// </summary>
+         public string id { get; set; }
     }
 }

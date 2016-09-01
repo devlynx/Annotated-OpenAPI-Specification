@@ -74,7 +74,15 @@ namespace PetStore
                     {
                         Version = apiVersion,
                         Title = "Swagger Petstore",
-                        Description = "This is a sample server Petstore server. You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). For this sample, you can use the api key 'special-key' to test the authorization filters.\n\nFind out more about Swagger",
+                        Description = @"This is a sample server Petstore server. 
+You can find out more about Swagger at [http://swagger.io](http://swagger.io).
+
+## Markdown test
+- Normal Text
+- **Bold**
+- _Italics_ *More Italics*
+- ~~StrikeThrough~~
+- **Bold_+Italics_**",
                         TermsOfService = "http://swagger.io/terms/",
                         Contact = new Contact()
                         {
