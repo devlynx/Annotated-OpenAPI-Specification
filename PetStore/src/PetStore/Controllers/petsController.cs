@@ -23,15 +23,12 @@ namespace PetStore
     using MicroserviceBoilerplate;
     using Microsoft.AspNetCore.Mvc;
 
-    /// <summary>
-    /// Class petsController.
-    /// </summary>
-    /// <httpHeader name="X-CorelationId" type="string" required="true">Guid to help track request flow.</httpHeader>
+    /// <controllerSubTitle name="pets">Everything about your pets</controllerSubTitle>
+    /// <globalHttpHeader name="CorelationId" type="string" required="true">Guid to help track request flow.</globalHttpHeader>
     [Route("[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
     {
-
         /// <summary>
         /// Add a new pet to the store
         /// </summary>
@@ -41,7 +38,6 @@ namespace PetStore
 
         /// <param name="pet">**Pet to be added to the store**</param>
 
-        /// <httpHeader name="X-CorelationId" type="string" required="true">Guid to help track request flow.</httpHeader>
         /// <httpHeader name="Accept-Language" type="string" required="false" default="en-US">Preferred language.</httpHeader>
 
         [HttpPost]

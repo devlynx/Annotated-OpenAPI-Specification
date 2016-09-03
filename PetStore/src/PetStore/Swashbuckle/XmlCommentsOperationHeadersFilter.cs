@@ -27,16 +27,20 @@ namespace PetStore
 
     public class XmlCommentsOperationHeadersFilter : IOperationFilter
     {
-        private const string HeaderName = "httpHeader"; // NOTE: must match the value in HttpHeaderXPath
+        private const string HeaderName = "httpHeader";
+        private const string HttpHeaderXPath = HeaderName + "[@name='{0}' type='{1}' required='{2}']";
+
+        private const string GlobalHeaderName = "globalHttpHeader";
+        private const string GlobalHttpHeaderXPath = GlobalHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+
 
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
 
-        private const string HttpHeaderXPath = "httpHeader[@name='{0}' type='{1}' required='{2}']";
-
         private readonly XPathNavigator _xmlNavigator;
 
-        public XmlCommentsOperationHeadersFilter(XPathDocument xmlDoc, bool allowDuplicates = true)
+        public XmlCommentsOperationHeadersFilter(string xmlDocPath, bool allowDuplicates = true)
         {
+            var xmlDoc = new XPathDocument(xmlDocPath);
             _xmlNavigator = xmlDoc.CreateNavigator();
         }
 
@@ -53,19 +57,19 @@ namespace PetStore
         {
             var commentId = XmlCommentsIdHelper.GetCommentIdForMethod(controllerActionDescriptor.MethodInfo);
             var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
-            ApplyHeaderComments(operation, commentNode);
+            ApplyHeaderComments(operation, commentNode, false);
         }
 
         private void ApplyGlobalHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
         {
             var commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
             var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
-            ApplyHeaderComments(operation, commentNode);
+            ApplyHeaderComments(operation, commentNode, true);
         }
 
-        private static void ApplyHeaderComments(Operation operation, XPathNavigator commentNode)
+        private static void ApplyHeaderComments(Operation operation, XPathNavigator commentNode, bool isGlobal)
         {
-            XPathNodeIterator paramNode = commentNode.SelectChildren(HeaderName, string.Empty);
+            XPathNodeIterator paramNode = commentNode.SelectChildren(isGlobal ? GlobalHeaderName : HeaderName, string.Empty);
             for (int i = 0; i < paramNode.Count; i++)
             {
                 paramNode.MoveNext();
@@ -105,12 +109,13 @@ namespace PetStore
             }
         }
     }
+
     enum httpHeaderType
     {
-         @string,
-         number, 
-         integer, 
-         boolean,
-         array
+        @string,
+        number,
+        integer,
+        boolean,
+        array
     }
 }

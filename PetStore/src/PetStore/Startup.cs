@@ -101,11 +101,8 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
                     c.DescribeAllEnumsAsStrings();
                     c.IncludeXmlComments(GetXmlCommentsPath());
-
-                    c.DocumentFilter<ApplySwaggerDocumentModifications>();
-
-                    var xmlDoc = new XPathDocument(GetXmlCommentsPath());
-                    c.OperationFilter<XmlCommentsOperationHeadersFilter>(xmlDoc);
+                    c.DocumentFilter<ControllerSubTitleTags>(GetXmlCommentsPath());
+                    c.OperationFilter<XmlCommentsOperationHeadersFilter>(GetXmlCommentsPath());
                 });
         }
 
