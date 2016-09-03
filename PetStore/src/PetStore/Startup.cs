@@ -13,9 +13,12 @@
 // limitations under the License.
 #endregion
 
+using Swashbuckle.Swagger.Model;
+
 namespace PetStore
 {
     using System.IO;
+    using System.Xml.XPath;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -25,7 +28,6 @@ namespace PetStore
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using Serilog;
-    using Swashbuckle.Swagger.Model;
 
     public class Startup
     {
@@ -96,9 +98,14 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
                             Url = "http://www.apache.org/licenses/LICENSE-2.0.html",
                         },
                     });
+
                     c.DescribeAllEnumsAsStrings();
                     c.IncludeXmlComments(GetXmlCommentsPath());
+
                     c.DocumentFilter<ApplySwaggerDocumentModifications>();
+
+                    var xmlDoc = new XPathDocument(GetXmlCommentsPath());
+                    c.OperationFilter<XmlCommentsOperationHeadersFilter>(xmlDoc);
                 });
         }
 
@@ -116,8 +123,6 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
             if (hostingEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseDatabaseErrorPage();
-                //app.UseBrowserLink();
             }
 
             app.UseSwagger("swagger/{apiVersion}/swagger.json");

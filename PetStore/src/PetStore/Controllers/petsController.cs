@@ -13,6 +13,8 @@
 // limitations under the License.
 #endregion
 
+using Swashbuckle.SwaggerGen.Annotations;
+
 namespace PetStore
 {
     using System;
@@ -20,12 +22,15 @@ namespace PetStore
     using System.ComponentModel.DataAnnotations;
     using MicroserviceBoilerplate;
     using Microsoft.AspNetCore.Mvc;
-    using Swashbuckle.SwaggerGen.Annotations;
 
+    /// <summary>
+    /// Class petsController.
+    /// </summary>
+    /// <httpHeader name="X-CorelationId" type="string" required="true">Guid to help track request flow.</httpHeader>
     [Route("[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
-    { 
+    {
 
         /// <summary>
         /// Add a new pet to the store
@@ -35,6 +40,10 @@ namespace PetStore
         /// <response code="201">Returns the newly created pet id</response> 
 
         /// <param name="pet">**Pet to be added to the store**</param>
+
+        /// <httpHeader name="X-CorelationId" type="string" required="true">Guid to help track request flow.</httpHeader>
+        /// <httpHeader name="Accept-Language" type="string" required="false" default="en-US">Preferred language.</httpHeader>
+
         [HttpPost]
         [Produces("application/json")]
         [SwaggerOperation(OperationId = "addPet")]
@@ -42,6 +51,7 @@ namespace PetStore
         [ProducesResponseType(typeof(JSend<IEnumerable<InvalidProperty>>), 400)]
         public IActionResult Create([FromBody, Required]Pet pet)
         {
+            var abc = Request.Headers["xxx"];
             return Ok("value");
         }
 

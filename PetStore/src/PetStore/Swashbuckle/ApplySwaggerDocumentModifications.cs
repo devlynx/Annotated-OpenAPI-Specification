@@ -13,6 +13,9 @@
 // limitations under the License.
 #endregion
 
+using Swashbuckle.Swagger.Model;
+using Swashbuckle.SwaggerGen.Generator;
+
 namespace PetStore
 {
     using System;
@@ -20,8 +23,6 @@ namespace PetStore
     using System.Linq;
     using MicroserviceBoilerplate;
     using Newtonsoft.Json;
-    using Swashbuckle.Swagger.Model;
-    using Swashbuckle.SwaggerGen.Generator;
 
     internal class ApplySwaggerDocumentModifications : IDocumentFilter
     {
