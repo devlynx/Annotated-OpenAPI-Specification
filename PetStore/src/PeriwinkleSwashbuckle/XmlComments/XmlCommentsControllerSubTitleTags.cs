@@ -17,7 +17,7 @@ using Swashbuckle.Swagger.Model;
 using Swashbuckle.SwaggerGen.Annotations;
 using Swashbuckle.SwaggerGen.Generator;
 
-namespace PetStore
+namespace Periwinkle.Swashbuckle
 {
     using System;
     using System.Collections.Generic;
@@ -26,13 +26,13 @@ namespace PetStore
     using System.Xml.XPath;
     using Microsoft.AspNetCore.Mvc;
 
-    internal class ControllerSubTitleTags : IDocumentFilter
+    public class XmlCommentsControllerSubTitleTags : IDocumentFilter
     {
         private readonly XPathNavigator _xmlNavigator;
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
         private const string SubTitleXPath = "controllerSubTitle";
 
-        public ControllerSubTitleTags(string xmlDocPath)
+        public XmlCommentsControllerSubTitleTags(string xmlDocPath)
         {
             var xmlDoc = new XPathDocument(xmlDocPath);
             _xmlNavigator = xmlDoc.CreateNavigator();

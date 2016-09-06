@@ -28,6 +28,7 @@ namespace PetStore
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using Serilog;
+    using Periwinkle.Swashbuckle;
 
     public class Startup
     {
@@ -101,7 +102,7 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
                     c.DescribeAllEnumsAsStrings();
                     c.IncludeXmlComments(GetXmlCommentsPath());
-                    c.DocumentFilter<ControllerSubTitleTags>(GetXmlCommentsPath());
+                    c.DocumentFilter<XmlCommentsControllerSubTitleTags>(GetXmlCommentsPath());
                     c.OperationFilter<XmlCommentsOperationHeadersFilter>(GetXmlCommentsPath());
                 });
         }

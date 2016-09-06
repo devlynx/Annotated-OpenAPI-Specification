@@ -24,7 +24,12 @@ namespace PetStore
     using Microsoft.AspNetCore.Mvc;
 
     /// <controllerSubTitle name="pets">Everything about your pets</controllerSubTitle>
-    /// <globalHttpHeader name="CorelationId" type="string" required="true">Guid to help track request flow.</globalHttpHeader>
+    /// <globalHttpHeader 
+    ///     name="CorelationId" 
+    ///     type="string" 
+    ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" 
+    ///     required="true">Guid to help track request flow.
+    /// </globalHttpHeader>
     [Route("[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
@@ -38,7 +43,7 @@ namespace PetStore
 
         /// <param name="pet">**Pet to be added to the store**</param>
 
-        /// <httpHeader name="Accept-Language" type="string" required="false" default="en-US">Preferred language.</httpHeader>
+        /// <httpHeader name="Accept-Language" type="string" default="en-US">Preferred language</httpHeader>
 
         [HttpPost]
         [Produces("application/json")]

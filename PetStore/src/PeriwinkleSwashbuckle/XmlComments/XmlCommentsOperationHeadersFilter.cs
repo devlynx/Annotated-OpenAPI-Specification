@@ -17,15 +17,16 @@ using Swashbuckle.Swagger.Model;
 using Swashbuckle.SwaggerGen.Annotations;
 using Swashbuckle.SwaggerGen.Generator;
 
-namespace PetStore
+namespace Periwinkle.Swashbuckle
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using System.Xml.XPath;
     using Microsoft.AspNetCore.Mvc.Controllers;
 
-    public class XmlCommentsOperationHeadersFilter : IOperationFilter
+     public class XmlCommentsOperationHeadersFilter : IOperationFilter
     {
         private const string HeaderName = "httpHeader";
         private const string HttpHeaderXPath = HeaderName + "[@name='{0}' type='{1}' required='{2}']";
@@ -33,12 +34,11 @@ namespace PetStore
         private const string GlobalHeaderName = "globalHttpHeader";
         private const string GlobalHttpHeaderXPath = GlobalHeaderName + "[@name='{0}' type='{1}' required='{2}']";
 
-
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
 
         private readonly XPathNavigator _xmlNavigator;
 
-        public XmlCommentsOperationHeadersFilter(string xmlDocPath, bool allowDuplicates = true)
+        public XmlCommentsOperationHeadersFilter(string xmlDocPath, bool allowDuplicates = true, bool throwExceptions = false)
         {
             var xmlDoc = new XPathDocument(xmlDocPath);
             _xmlNavigator = xmlDoc.CreateNavigator();
@@ -77,6 +77,11 @@ namespace PetStore
             }
         }
 
+        private static bool HeaderParamValid(Func<string, bool> isValid, string value)
+        {
+            return isValid(value);
+        }
+
         private static void AddHeaderToOperation(Operation operation, XPathNodeIterator paramNode)
         {
 
@@ -86,36 +91,72 @@ namespace PetStore
                 return;
 
             string httpHeaderName = paramNode.Current.GetAttribute("name", uri);
-            IEnumerable<IParameter> duplicateParams = from p in operation.Parameters
-                                                      where p.In == "header" && p.Name.ToLower() == httpHeaderName.ToLower()
-                                                      select p;
+            NonBodyParameter headerParam = new NonBodyParameter();
+            headerParam.In = "header";
+            headerParam.Name = httpHeaderName;
+
+            if (String.IsNullOrWhiteSpace(httpHeaderName))
+            {
+                HeaderParamValidationError(operation, headerParam, "Parameter name must not be blank.");
+                return;
+            }
+
+            IEnumerable<IParameter> duplicateParams =
+                from p in operation.Parameters
+                where p.In == "header" && p.Name.ToLower() == httpHeaderName.ToLower()
+                select p;
 
             if (duplicateParams.Count<IParameter>() == 0)
             {
-                NonBodyParameter headerParam = new NonBodyParameter();
-
                 //TODO: Finish all of the validation and fields for http headers.
 
-                headerParam.In = "header";
-                headerParam.Name = httpHeaderName; // Required
-                headerParam.Description = XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml);
+                StringBuilder description = new StringBuilder(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
+
                 headerParam.Type = paramNode.Current.GetAttribute("type", uri); // Required
-                headerParam.Name = httpHeaderName;
-                headerParam.Default = paramNode.Current.GetAttribute("default", uri);
+                if (!HeaderParamValid((v => new List<string>()
+                        { "string", "number", "integer", "boolean", "array" }.Contains(v)), headerParam.Type))
+                {
+                    HeaderParamValidationError(operation, headerParam,
+                        "Type must be one of: string, number, integer, boolean, array");
+                    return;
+                }
+
                 headerParam.Required = paramNode.Current.GetAttribute("required", uri).Trim().ToLower() == "true";
+
+                if (!headerParam.Required)
+                    headerParam.Default = paramNode.Current.GetAttribute("default", uri);
+
+                
                 headerParam.Pattern = paramNode.Current.GetAttribute("pattern", uri);
+
+                headerParam.Description = description.ToString();
 
                 operation.Parameters.Add(headerParam);
             }
         }
-    }
 
-    enum httpHeaderType
-    {
-        @string,
-        number,
-        integer,
-        boolean,
-        array
+        private static void HeaderParamValidationError(Operation operation, NonBodyParameter headerParam, string whatsWrong)
+        {
+            headerParam.Name = "Swagger Validation Error";
+            headerParam.Description = whatsWrong;
+            operation.Parameters.Add(headerParam);
+        }
+
+        private static string GetHeaderParameterDescription(XPathNodeIterator paramNode, NonBodyParameter headerParam)
+        {
+           // headerParam.Name = "Hi There...";
+            return "hello";
+
+            StringBuilder headerBuilder = new StringBuilder(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
+
+            headerBuilder.AppendLine();
+            headerBuilder.AppendLine();
+            headerBuilder.AppendFormat("Pattern = {0}", headerParam.Pattern);
+
+            headerBuilder.AppendLine();
+            headerBuilder.AppendLine();
+            headerBuilder.AppendFormat("maximum = {0}", 25);
+            return headerBuilder.ToString();
+        }
     }
 }
