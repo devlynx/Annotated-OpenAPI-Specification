@@ -22,11 +22,12 @@ namespace Periwinkle.Swashbuckle
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Text;
     using System.Xml.XPath;
     using Microsoft.AspNetCore.Mvc.Controllers;
 
-     public class XmlCommentsOperationHeadersFilter : IOperationFilter
+    public class XmlCommentsOperationHeadersFilter : IOperationFilter
     {
         private const string HeaderName = "httpHeader";
         private const string HttpHeaderXPath = HeaderName + "[@name='{0}' type='{1}' required='{2}']";
@@ -38,7 +39,7 @@ namespace Periwinkle.Swashbuckle
 
         private readonly XPathNavigator _xmlNavigator;
 
-        public XmlCommentsOperationHeadersFilter(string xmlDocPath, bool allowDuplicates = true, bool throwExceptions = false)
+        public XmlCommentsOperationHeadersFilter(string xmlDocPath, bool allowDuplicates = true, bool throwExceptions = true)
         {
             var xmlDoc = new XPathDocument(xmlDocPath);
             _xmlNavigator = xmlDoc.CreateNavigator();
@@ -108,7 +109,7 @@ namespace Periwinkle.Swashbuckle
 
             if (duplicateParams.Count<IParameter>() == 0)
             {
-                //TODO: Finish all of the validation and fields for http headers.
+                headerParam.Required = paramNode.Current.GetAttribute("required", uri).ToLower() == bool.TrueString.ToLower();
 
                 StringBuilder description = new StringBuilder(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
 
@@ -121,17 +122,95 @@ namespace Periwinkle.Swashbuckle
                     return;
                 }
 
-                headerParam.Required = paramNode.Current.GetAttribute("required", uri).Trim().ToLower() == "true";
+                if (headerParam.Type == "array")
+                {
+                    headerParam.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", paramNode, description, uri, "csv");
+                    if (!HeaderParamValid((v => new List<string>()
+                        { "csv", "ssv", "tsv", "pipes" }.Contains(v)), headerParam.CollectionFormat))
+                    {
+                        HeaderParamValidationError(operation, headerParam,
+                            "collectionFormat must be one of: csv, ssv, tsv, pipes");
+                        return;
+                    }
+
+                    // TODO: finish items...
+                    headerParam.Items = null;
+                }
 
                 if (!headerParam.Required)
-                    headerParam.Default = paramNode.Current.GetAttribute("default", uri);
+                {
+                    headerParam.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
+                }
 
-                
-                headerParam.Pattern = paramNode.Current.GetAttribute("pattern", uri);
+                headerParam.Format = GetStringParamAttributeWithDescription("format", paramNode, description, uri);
+                headerParam.Maximum = GetIntParamAttributeWithDescription("maximum", paramNode, description, uri);
+                headerParam.ExclusiveMaximum = GetBoolParamAttributeWithDescription("exclusiveMaximum", paramNode, description, uri);
+                headerParam.Minimum = GetIntParamAttributeWithDescription("minimum", paramNode, description, uri);
+                headerParam.ExclusiveMinimum = GetBoolParamAttributeWithDescription("exclusiveMinimum", paramNode, description, uri);
+                headerParam.MaxLength = GetIntParamAttributeWithDescription("maxLength", paramNode, description, uri);
+                headerParam.MinLength = GetIntParamAttributeWithDescription("minLength", paramNode, description, uri);
+                headerParam.Pattern = GetStringParamAttributeWithDescription("pattern", paramNode, description, uri);
+                headerParam.MaxItems = GetIntParamAttributeWithDescription("maxItems", paramNode, description, uri);
+                headerParam.MinItems = GetIntParamAttributeWithDescription("minItems", paramNode, description, uri);
+                headerParam.UniqueItems = GetBoolParamAttributeWithDescription("uniqueItems", paramNode, description, uri);
+                // TODO: implement Enum Attribute
+                //headerParam.Enum = GetListParamAttributeWithDescription("enum", paramNode, description, uri);
+                headerParam.MultipleOf = GetIntParamAttributeWithDescription("multipleOf", paramNode, description, uri);
 
                 headerParam.Description = description.ToString();
 
                 operation.Parameters.Add(headerParam);
+            }
+        }
+
+        private static bool? GetBoolParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
+        {
+            string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
+            bool? value = default(bool?);
+
+            if (!String.IsNullOrWhiteSpace(rawValue))
+            {
+                value = Convert.ToBoolean(rawValue);
+            }
+
+            BuildDescription(attributeName, description, rawValue, value);
+            return value;
+        }
+
+        private static int? GetIntParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
+        {
+            string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
+            int? value = default(int?);
+
+            if (!String.IsNullOrWhiteSpace(rawValue))
+            {
+                value = Convert.ToInt32(rawValue);
+            }
+
+            BuildDescription(attributeName, description, rawValue, value);
+            return value;
+        }
+        private static string GetStringParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
+        {
+            string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
+            string value = default(string);
+
+            if (!String.IsNullOrWhiteSpace(rawValue))
+            {
+                value = rawValue;
+            }
+
+            BuildDescription(attributeName, description, rawValue, value);
+            return value;
+        }
+
+        private static void BuildDescription<T>(string attributeName, StringBuilder description, string rawValue, T value)
+        {
+            if (!String.IsNullOrWhiteSpace(rawValue))
+            {
+                description.AppendLine();
+                description.AppendLine();
+                description.AppendFormat("{0} = {1}", attributeName, value);
             }
         }
 
@@ -140,23 +219,6 @@ namespace Periwinkle.Swashbuckle
             headerParam.Name = "Swagger Validation Error";
             headerParam.Description = whatsWrong;
             operation.Parameters.Add(headerParam);
-        }
-
-        private static string GetHeaderParameterDescription(XPathNodeIterator paramNode, NonBodyParameter headerParam)
-        {
-           // headerParam.Name = "Hi There...";
-            return "hello";
-
-            StringBuilder headerBuilder = new StringBuilder(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
-
-            headerBuilder.AppendLine();
-            headerBuilder.AppendLine();
-            headerBuilder.AppendFormat("Pattern = {0}", headerParam.Pattern);
-
-            headerBuilder.AppendLine();
-            headerBuilder.AppendLine();
-            headerBuilder.AppendFormat("maximum = {0}", 25);
-            return headerBuilder.ToString();
         }
     }
 }

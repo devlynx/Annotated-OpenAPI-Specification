@@ -26,7 +26,7 @@ namespace PetStore
     /// <controllerSubTitle name="pets">Everything about your pets</controllerSubTitle>
     /// <globalHttpHeader 
     ///     name="CorelationId" 
-    ///     type="string" 
+    ///     type="string"
     ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" 
     ///     required="true">Guid to help track request flow.
     /// </globalHttpHeader>
