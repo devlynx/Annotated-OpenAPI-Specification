@@ -19,7 +19,7 @@
 
 // For more information about JSend see: http://labs.omniti.com/labs/jsend
 
-namespace MicroserviceBoilerplate
+namespace Periwinkle.Swashbuckle
 {
     using System;
 

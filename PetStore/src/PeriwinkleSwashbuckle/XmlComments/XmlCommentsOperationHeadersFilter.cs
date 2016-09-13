@@ -25,15 +25,22 @@ namespace Periwinkle.Swashbuckle
     using System.Reflection;
     using System.Text;
     using System.Xml.XPath;
+    using Microsoft.AspNetCore.Http.Headers;
     using Microsoft.AspNetCore.Mvc.Controllers;
 
     public class XmlCommentsOperationHeadersFilter : IOperationFilter
     {
-        private const string HeaderName = "httpHeader";
-        private const string HttpHeaderXPath = HeaderName + "[@name='{0}' type='{1}' required='{2}']";
+        private const string RequestHeaderName = "httpRequestHeader";
+        private const string HttpRequestHeaderXPath = RequestHeaderName + "[@name='{0}' type='{1}' required='{2}']";
 
-        private const string GlobalHeaderName = "globalHttpHeader";
-        private const string GlobalHttpHeaderXPath = GlobalHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+        private const string GlobalRequestHeaderName = "globalHttpRequestHeader";
+        private const string GlobalRequestHttpHeaderXPath = GlobalRequestHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+
+        private const string ResponseHeaderName = "httpResponseHeader";
+        private const string HttpResponseHeaderXPath = ResponseHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+
+        private const string GlobalResponseHeaderName = "globalHttpResponseHeader";
+        private const string GlobalResponseHttpHeaderXPath = GlobalResponseHeaderName + "[@name='{0}' type='{1}' required='{2}']";
 
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
 
@@ -58,23 +65,25 @@ namespace Periwinkle.Swashbuckle
         {
             var commentId = XmlCommentsIdHelper.GetCommentIdForMethod(controllerActionDescriptor.MethodInfo);
             var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
-            ApplyHeaderComments(operation, commentNode, false);
+            ApplyHeaderComments(operation, commentNode, RequestHeaderName, false);
+            ApplyHeaderComments(operation, commentNode, ResponseHeaderName, true);
         }
 
         private void ApplyGlobalHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
         {
             var commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
             var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
-            ApplyHeaderComments(operation, commentNode, true);
+            ApplyHeaderComments(operation, commentNode, GlobalRequestHeaderName, false);
+            ApplyHeaderComments(operation, commentNode, GlobalResponseHeaderName, true);
         }
 
-        private static void ApplyHeaderComments(Operation operation, XPathNavigator commentNode, bool isGlobal)
+        private static void ApplyHeaderComments(Operation operation, XPathNavigator commentNode, string headerName, bool isResponse)
         {
-            XPathNodeIterator paramNode = commentNode.SelectChildren(isGlobal ? GlobalHeaderName : HeaderName, string.Empty);
+            XPathNodeIterator paramNode = commentNode.SelectChildren(headerName, string.Empty);
             for (int i = 0; i < paramNode.Count; i++)
             {
                 paramNode.MoveNext();
-                AddHeaderToOperation(operation, paramNode);
+                AddHeaderToOperation(operation, paramNode, isResponse);
             }
         }
 
@@ -83,7 +92,7 @@ namespace Periwinkle.Swashbuckle
             return isValid(value);
         }
 
-        private static void AddHeaderToOperation(Operation operation, XPathNodeIterator paramNode)
+        private static void AddHeaderToOperation(Operation operation, XPathNodeIterator paramNode, bool isResponse)
         {
 
             string uri = string.Empty; // the URI is always local for the header xml comments.
@@ -111,7 +120,9 @@ namespace Periwinkle.Swashbuckle
             {
                 headerParam.Required = paramNode.Current.GetAttribute("required", uri).ToLower() == bool.TrueString.ToLower();
 
-                StringBuilder description = new StringBuilder(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
+                StringBuilder description = new StringBuilder();
+
+                description.AppendLine(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
 
                 headerParam.Type = paramNode.Current.GetAttribute("type", uri); // Required
                 if (!HeaderParamValid((v => new List<string>()
@@ -159,7 +170,25 @@ namespace Periwinkle.Swashbuckle
 
                 headerParam.Description = description.ToString();
 
-                operation.Parameters.Add(headerParam);
+                if (isResponse)
+                {
+                    string attributeCode = paramNode.Current.GetAttribute("code", uri);
+                    Response response = operation.Responses[attributeCode];
+                    if (response == null)
+                        return;
+                    if (response.Headers == null)
+                        response.Headers = new Dictionary<string, Header>();
+                    var x = from name in response.Headers.Keys select name;
+                    if (x.Count<string>() == 0)
+                    {
+                        Header header = new Header();
+                        header.Type = paramNode.Current.GetAttribute("type", uri);
+                        header.Description = XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml);
+                        response.Headers.Add(paramNode.Current.GetAttribute("name", uri), header);
+                    }
+                }
+                else
+                    operation.Parameters.Add(headerParam);
             }
         }
 

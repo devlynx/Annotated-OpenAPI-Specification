@@ -20,16 +20,23 @@ namespace PetStore
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using MicroserviceBoilerplate;
+    using Periwinkle.Swashbuckle;
     using Microsoft.AspNetCore.Mvc;
 
     /// <controllerSubTitle name="pets">Everything about your pets</controllerSubTitle>
-    /// <globalHttpHeader 
+    /// <globalHttpRequestHeader 
     ///     name="CorelationId" 
     ///     type="string"
     ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" 
     ///     required="true">Guid to help track request flow.
-    /// </globalHttpHeader>
+    /// </globalHttpRequestHeader>
+    /// 
+    /// <globalHttpResponseHeader 
+    ///     name="CorelationId" 
+    ///     type="string"
+    ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" 
+    ///     required="true">Guid to help track response flow.
+    /// </globalHttpResponseHeader>
     [Route("[controller]")]
     [Produces("application/json")]
     public class petsController : Controller
@@ -39,11 +46,13 @@ namespace PetStore
         /// </summary>
 
         /// <response code="400">Pet data is invalid</response> 
+        /// <httpResponseHeader code="400" name="Content-Length" type="integer">Length in bytes of the content</httpResponseHeader>
         /// <response code="201">Returns the newly created pet id</response> 
+        /// <httpResponseHeader code="201" name="Content-Length" type="integer">Length in bytes of the content</httpResponseHeader>
 
         /// <param name="pet">**Pet to be added to the store**</param>
 
-        /// <httpHeader name="Accept-Language" type="string" default="en-US">Preferred language</httpHeader>
+        /// <httpRequestHeader name="Accept-Language" type="string" default="en-US">Preferred language</httpRequestHeader>
 
         [HttpPost]
         [Produces("application/json")]
