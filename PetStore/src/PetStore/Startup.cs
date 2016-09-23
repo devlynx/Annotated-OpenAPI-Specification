@@ -18,7 +18,6 @@ using Swashbuckle.Swagger.Model;
 namespace PetStore
 {
     using System.IO;
-    using System.Xml.XPath;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -27,8 +26,8 @@ namespace PetStore
     using Microsoft.Extensions.PlatformAbstractions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
-    using Serilog;
     using Periwinkle.Swashbuckle;
+    using Serilog;
 
     public class Startup
     {
@@ -103,7 +102,8 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
                     c.DescribeAllEnumsAsStrings();
                     c.IncludeXmlComments(GetXmlCommentsPath());
                     c.DocumentFilter<XmlCommentsControllerSubTitleTags>(GetXmlCommentsPath());
-                    c.OperationFilter<XmlCommentsOperationHeadersFilter>(GetXmlCommentsPath());
+                    c.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(GetXmlCommentsPath());
+                    c.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(GetXmlCommentsPath());
                 });
         }
 
