@@ -22,19 +22,18 @@ namespace Periwinkle.Swashbuckle
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
     using System.Text;
     using System.Xml.XPath;
-    using Microsoft.AspNetCore.Http.Headers;
+    using Mapster;
     using Microsoft.AspNetCore.Mvc.Controllers;
 
     public class XmlCommentsOperationRequestHeadersFilter : IOperationFilter
     {
         private const string RequestHeaderName = "httpRequestHeader";
-        private const string HttpRequestHeaderXPath = RequestHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+        private const string HttpRequestHeaderXPath = RequestHeaderName + "[@name='{0}' type='{1}']";
 
         private const string GlobalRequestHeaderName = "globalHttpRequestHeader";
-        private const string GlobalRequestHttpHeaderXPath = GlobalRequestHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+        private const string GlobalRequestHttpHeaderXPath = GlobalRequestHeaderName + "[@name='{0}' type='{1}']";
 
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
 
@@ -93,13 +92,11 @@ namespace Periwinkle.Swashbuckle
                 return;
 
             string httpHeaderName = paramNode.Current.GetAttribute("name", uri);
-            NonBodyParameter headerParam = new NonBodyParameter();
-            headerParam.In = "header";
-            headerParam.Name = httpHeaderName;
+            PartialSchema partialSchema = new PartialSchema();
 
             if (String.IsNullOrWhiteSpace(httpHeaderName))
             {
-                HeaderParamValidationError(operation, headerParam, "Parameter name must not be blank.");
+                HeaderParamValidationError(operation, new NonBodyParameter(), "Parameter name must not be blank.");
                 return;
             }
 
@@ -110,63 +107,70 @@ namespace Periwinkle.Swashbuckle
 
             if (duplicateParams.Count<IParameter>() == 0)
             {
-                headerParam.Required = paramNode.Current.GetAttribute("required", uri).ToLower() == bool.TrueString.ToLower();
 
-                HeaderDescriptionBuilder description = new HeaderDescriptionBuilder();
+                HeaderBuilder headerBuilder = new HeaderBuilder();
+                PartialHeader header = headerBuilder.GetHeader(paramNode);
 
-                description.AppendLine(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
+                //bool headerParamRequired = paramNode.Current.GetAttribute("required", uri).ToLower() == bool.TrueString.ToLower();
 
-                headerParam.Type = paramNode.Current.GetAttribute("type", uri); // Required
-                if (!HeaderParamValid((v => new List<string>()
-                        { "string", "number", "integer", "boolean", "array" }.Contains(v)), headerParam.Type))
-                {
-                    HeaderParamValidationError(operation, headerParam,
-                        "Type must be one of: string, number, integer, boolean, array");
-                    return;
-                }
+                //StringBuilder description = new StringBuilder();
 
-                if (headerParam.Type == "array")
-                {
-                    headerParam.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", paramNode, description, uri, "csv");
-                    if (!HeaderParamValid((v => new List<string>()
-                        { "csv", "ssv", "tsv", "pipes" }.Contains(v)), headerParam.CollectionFormat))
-                    {
-                        HeaderParamValidationError(operation, headerParam,
-                            "collectionFormat must be one of: csv, ssv, tsv, pipes");
-                        return;
-                    }
+                //description.AppendLine(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
 
-                    // TODO: finish items...
-                    headerParam.Items = null;
-                }
+                //partialSchema.Type = paramNode.Current.GetAttribute("type", uri); // Required
+                //if (!HeaderParamValid((v => new List<string>()
+                //        { "string", "number", "integer", "boolean", "array" }.Contains(v)), partialSchema.Type))
+                //{
+                //    HeaderParamValidationError(operation, new NonBodyParameter(),
+                //        "Type must be one of: string, number, integer, boolean, array");
+                //    return;
+                //}
 
-                if (!headerParam.Required)
-                {
-                    headerParam.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
-                }
+                //if (partialSchema.Type == "array")
+                //{
+                //    partialSchema.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", paramNode, description, uri, "csv");
+                //    if (!HeaderParamValid((v => new List<string>()
+                //        { "csv", "ssv", "tsv", "pipes" }.Contains(v)), partialSchema.CollectionFormat))
+                //    {
+                //        HeaderParamValidationError(operation, new NonBodyParameter(),
+                //            "collectionFormat must be one of: csv, ssv, tsv, pipes");
+                //        return;
+                //    }
 
-                headerParam.Format = GetStringParamAttributeWithDescription("format", paramNode, description, uri);
-                headerParam.Maximum = GetIntParamAttributeWithDescription("maximum", paramNode, description, uri);
-                headerParam.ExclusiveMaximum = GetBoolParamAttributeWithDescription("exclusiveMaximum", paramNode, description, uri);
-                headerParam.Minimum = GetIntParamAttributeWithDescription("minimum", paramNode, description, uri);
-                headerParam.ExclusiveMinimum = GetBoolParamAttributeWithDescription("exclusiveMinimum", paramNode, description, uri);
-                headerParam.MaxLength = GetIntParamAttributeWithDescription("maxLength", paramNode, description, uri);
-                headerParam.MinLength = GetIntParamAttributeWithDescription("minLength", paramNode, description, uri);
-                headerParam.Pattern = GetStringParamAttributeWithDescription("pattern", paramNode, description, uri);
-                headerParam.MaxItems = GetIntParamAttributeWithDescription("maxItems", paramNode, description, uri);
-                headerParam.MinItems = GetIntParamAttributeWithDescription("minItems", paramNode, description, uri);
-                headerParam.UniqueItems = GetBoolParamAttributeWithDescription("uniqueItems", paramNode, description, uri);
-                // TODO: implement Enum Attribute
-                //headerParam.Enum = GetListParamAttributeWithDescription("enum", paramNode, description, uri);
-                headerParam.MultipleOf = GetIntParamAttributeWithDescription("multipleOf", paramNode, description, uri);
+                //    // TODO: finish items...
+                //    partialSchema.Items = null;
+                //}
 
-                headerParam.Description = description.ToString();
+                //if (!headerParamRequired)
+                //{
+                //    partialSchema.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
+                //}
 
+                //partialSchema.Format = GetStringParamAttributeWithDescription("format", paramNode, description, uri);
+                //partialSchema.Maximum = GetIntParamAttributeWithDescription("maximum", paramNode, description, uri);
+                //partialSchema.ExclusiveMaximum = GetBoolParamAttributeWithDescription("exclusiveMaximum", paramNode, description, uri);
+                //partialSchema.Minimum = GetIntParamAttributeWithDescription("minimum", paramNode, description, uri);
+                //partialSchema.ExclusiveMinimum = GetBoolParamAttributeWithDescription("exclusiveMinimum", paramNode, description, uri);
+                //partialSchema.MaxLength = GetIntParamAttributeWithDescription("maxLength", paramNode, description, uri);
+                //partialSchema.MinLength = GetIntParamAttributeWithDescription("minLength", paramNode, description, uri);
+                //partialSchema.Pattern = GetStringParamAttributeWithDescription("pattern", paramNode, description, uri);
+                //partialSchema.MaxItems = GetIntParamAttributeWithDescription("maxItems", paramNode, description, uri);
+                //partialSchema.MinItems = GetIntParamAttributeWithDescription("minItems", paramNode, description, uri);
+                //partialSchema.UniqueItems = GetBoolParamAttributeWithDescription("uniqueItems", paramNode, description, uri);
+                //// TODO: implement Enum Attribute
+                ////partialSchema.Enum = GetListParamAttributeWithDescription("enum", paramNode, description, uri);
+                //partialSchema.MultipleOf = GetIntParamAttributeWithDescription("multipleOf", paramNode, description, uri);
+
+                NonBodyParameter headerParam = TypeAdapter.Adapt<NonBodyParameter>(header);
+
+                headerParam.In = "header";
+                headerParam.Name = httpHeaderName;
+                headerParam.Description = headerBuilder.ToString();
                 operation.Parameters.Add(headerParam);
             }
         }
 
-        private static bool? GetBoolParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, HeaderDescriptionBuilder description, string uri, string defaultValue = null)
+        private static bool? GetBoolParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
         {
             string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
             bool? value = default(bool?);
@@ -180,7 +184,7 @@ namespace Periwinkle.Swashbuckle
             return value;
         }
 
-        private static int? GetIntParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, HeaderDescriptionBuilder description, string uri, string defaultValue = null)
+        private static int? GetIntParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
         {
             string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
             int? value = default(int?);
@@ -194,7 +198,7 @@ namespace Periwinkle.Swashbuckle
             return value;
         }
 
-        private static string GetStringParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, HeaderDescriptionBuilder description, string uri, string defaultValue = null)
+        private static string GetStringParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
         {
             string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
             string value = default(string);
@@ -208,7 +212,7 @@ namespace Periwinkle.Swashbuckle
             return value;
         }
 
-        private static void BuildDescription<T>(string attributeName, HeaderDescriptionBuilder description, string rawValue, T value)
+        private static void BuildDescription<T>(string attributeName, StringBuilder description, string rawValue, T value)
         {
             if (!String.IsNullOrWhiteSpace(rawValue))
             {

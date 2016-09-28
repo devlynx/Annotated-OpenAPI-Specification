@@ -34,8 +34,8 @@ namespace PetStore
     /// <globalHttpResponseHeader 
     ///     name="CorelationId" 
     ///     type="string"
-    ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" 
-    ///     required="true">Guid to help track response flow.
+    ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}">
+    ///     Guid to help track response flow.
     /// </globalHttpResponseHeader>
     [Route("[controller]")]
     [Produces("application/json")]
@@ -45,12 +45,12 @@ namespace PetStore
         /// Add a new pet to the store
         /// </summary>
 
+        /// <param name="pet">**Pet to be added to the store**</param>
+
         /// <response code="400">Pet data is invalid</response> 
         /// <httpResponseHeader code="400" name="Content-Length" type="integer">Length in bytes of the content</httpResponseHeader>
         /// <response code="201">Returns the newly created pet id</response> 
         /// <httpResponseHeader code="201" name="Content-Length" type="integer">Length in bytes of the content</httpResponseHeader>
-
-        /// <param name="pet">**Pet to be added to the store**</param>
 
         /// <httpRequestHeader name="Accept-Language" type="string" default="en-US">Preferred language</httpRequestHeader>
 

@@ -30,10 +30,10 @@ namespace Periwinkle.Swashbuckle
     public class XmlCommentsOperationResponseHeadersFilter : IOperationFilter
     {
         private const string ResponseHeaderName = "httpResponseHeader";
-        private const string HttpResponseHeaderXPath = ResponseHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+        private const string HttpResponseHeaderXPath = ResponseHeaderName + "[@name='{0}' type='{1}']";
 
         private const string GlobalResponseHeaderName = "globalHttpResponseHeader";
-        private const string GlobalResponseHttpHeaderXPath = GlobalResponseHeaderName + "[@name='{0}' type='{1}' required='{2}']";
+        private const string GlobalResponseHttpHeaderXPath = GlobalResponseHeaderName + "[@name='{0}' type='{1}']";
 
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
 
@@ -85,7 +85,6 @@ namespace Periwinkle.Swashbuckle
 
         private static void AddHeaderToOperation(Operation operation, XPathNodeIterator paramNode)
         {
-
             string uri = string.Empty; // the URI is always local for the header xml comments.
 
             if (paramNode.Current == null)
@@ -107,8 +106,6 @@ namespace Periwinkle.Swashbuckle
 
             if (duplicateParams.Count<IParameter>() == 0)
             {
-                bool headerRequired = paramNode.Current.GetAttribute("required", uri).ToLower() == bool.TrueString.ToLower();
-
                 StringBuilder description = new StringBuilder();
 
                 description.AppendLine(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
@@ -137,10 +134,7 @@ namespace Periwinkle.Swashbuckle
                     partialSchema.Items = null;
                 }
 
-                if (!headerRequired)
-                {
-                    partialSchema.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
-                }
+                partialSchema.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
 
                 partialSchema.Format = GetStringParamAttributeWithDescription("format", paramNode, description, uri);
                 partialSchema.Maximum = GetIntParamAttributeWithDescription("maximum", paramNode, description, uri);
@@ -157,22 +151,19 @@ namespace Periwinkle.Swashbuckle
                 //headerParam.Enum = GetListParamAttributeWithDescription("enum", paramNode, description, uri);
                 partialSchema.MultipleOf = GetIntParamAttributeWithDescription("multipleOf", paramNode, description, uri);
 
-                Header header = TypeAdapter.Adapt<Header>(partialSchema);
-                
-                //partialSchema.Description = description.ToString();
-                //partialSchema.In = "header";
-                //partialSchema.Name = httpHeaderName;
-                //partialSchema.Required = headerRequired;
-
                 string attributeCode = paramNode.Current.GetAttribute("code", uri);
+
                 Response response = operation.Responses[attributeCode];
                 if (response == null)
                     return;
+
                 if (response.Headers == null)
                     response.Headers = new Dictionary<string, Header>();
+
                 var x = from name in response.Headers.Keys select name;
                 if (x.Count<string>() == 0)
                 {
+                    Header header = TypeAdapter.Adapt<Header>(partialSchema);
                     header.Type = paramNode.Current.GetAttribute("type", uri);
                     header.Description = description.ToString();
                     response.Headers.Add(httpHeaderName, header);
@@ -207,6 +198,7 @@ namespace Periwinkle.Swashbuckle
             BuildDescription(attributeName, description, rawValue, value);
             return value;
         }
+
         private static string GetStringParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
         {
             string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
