@@ -111,56 +111,6 @@ namespace Periwinkle.Swashbuckle
                 HeaderBuilder headerBuilder = new HeaderBuilder();
                 PartialHeader header = headerBuilder.GetHeader(paramNode);
 
-                //bool headerParamRequired = paramNode.Current.GetAttribute("required", uri).ToLower() == bool.TrueString.ToLower();
-
-                //StringBuilder description = new StringBuilder();
-
-                //description.AppendLine(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
-
-                //partialSchema.Type = paramNode.Current.GetAttribute("type", uri); // Required
-                //if (!HeaderParamValid((v => new List<string>()
-                //        { "string", "number", "integer", "boolean", "array" }.Contains(v)), partialSchema.Type))
-                //{
-                //    HeaderParamValidationError(operation, new NonBodyParameter(),
-                //        "Type must be one of: string, number, integer, boolean, array");
-                //    return;
-                //}
-
-                //if (partialSchema.Type == "array")
-                //{
-                //    partialSchema.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", paramNode, description, uri, "csv");
-                //    if (!HeaderParamValid((v => new List<string>()
-                //        { "csv", "ssv", "tsv", "pipes" }.Contains(v)), partialSchema.CollectionFormat))
-                //    {
-                //        HeaderParamValidationError(operation, new NonBodyParameter(),
-                //            "collectionFormat must be one of: csv, ssv, tsv, pipes");
-                //        return;
-                //    }
-
-                //    // TODO: finish items...
-                //    partialSchema.Items = null;
-                //}
-
-                //if (!headerParamRequired)
-                //{
-                //    partialSchema.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
-                //}
-
-                //partialSchema.Format = GetStringParamAttributeWithDescription("format", paramNode, description, uri);
-                //partialSchema.Maximum = GetIntParamAttributeWithDescription("maximum", paramNode, description, uri);
-                //partialSchema.ExclusiveMaximum = GetBoolParamAttributeWithDescription("exclusiveMaximum", paramNode, description, uri);
-                //partialSchema.Minimum = GetIntParamAttributeWithDescription("minimum", paramNode, description, uri);
-                //partialSchema.ExclusiveMinimum = GetBoolParamAttributeWithDescription("exclusiveMinimum", paramNode, description, uri);
-                //partialSchema.MaxLength = GetIntParamAttributeWithDescription("maxLength", paramNode, description, uri);
-                //partialSchema.MinLength = GetIntParamAttributeWithDescription("minLength", paramNode, description, uri);
-                //partialSchema.Pattern = GetStringParamAttributeWithDescription("pattern", paramNode, description, uri);
-                //partialSchema.MaxItems = GetIntParamAttributeWithDescription("maxItems", paramNode, description, uri);
-                //partialSchema.MinItems = GetIntParamAttributeWithDescription("minItems", paramNode, description, uri);
-                //partialSchema.UniqueItems = GetBoolParamAttributeWithDescription("uniqueItems", paramNode, description, uri);
-                //// TODO: implement Enum Attribute
-                ////partialSchema.Enum = GetListParamAttributeWithDescription("enum", paramNode, description, uri);
-                //partialSchema.MultipleOf = GetIntParamAttributeWithDescription("multipleOf", paramNode, description, uri);
-
                 NonBodyParameter headerParam = TypeAdapter.Adapt<NonBodyParameter>(header);
 
                 headerParam.In = "header";

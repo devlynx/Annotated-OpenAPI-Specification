@@ -32,8 +32,8 @@ namespace Periwinkle.Swashbuckle
         private const string ResponseHeaderName = "httpResponseHeader";
         private const string HttpResponseHeaderXPath = ResponseHeaderName + "[@name='{0}' type='{1}']";
 
-        private const string GlobalResponseHeaderName = "globalHttpResponseHeader";
-        private const string GlobalResponseHttpHeaderXPath = GlobalResponseHeaderName + "[@name='{0}' type='{1}']";
+        //private const string GlobalResponseHeaderName = "globalHttpResponseHeader";
+        //private const string GlobalResponseHttpHeaderXPath = GlobalResponseHeaderName + "[@name='{0}' type='{1}']";
 
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
 
@@ -50,7 +50,7 @@ namespace Periwinkle.Swashbuckle
             var controllerActionDescriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
             if (controllerActionDescriptor == null) return;
 
-            ApplyGlobalHeaderComments(operation, controllerActionDescriptor);
+            //ApplyGlobalHeaderComments(operation, controllerActionDescriptor);
             ApplyOperationHeaderComments(operation, controllerActionDescriptor);
         }
 
@@ -61,12 +61,12 @@ namespace Periwinkle.Swashbuckle
             ApplyHeaderComments(operation, commentNode, ResponseHeaderName);
         }
 
-        private void ApplyGlobalHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
-        {
-            var commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
-            var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
-            ApplyHeaderComments(operation, commentNode, GlobalResponseHeaderName);
-        }
+        //private void ApplyGlobalHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
+        //{
+        //    var commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
+        //    var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+        //    ApplyHeaderComments(operation, commentNode, GlobalResponseHeaderName);
+        //}
 
         private static void ApplyHeaderComments(Operation operation, XPathNavigator commentNode, string headerName)
         {
@@ -74,16 +74,11 @@ namespace Periwinkle.Swashbuckle
             for (int i = 0; i < paramNode.Count; i++)
             {
                 paramNode.MoveNext();
-                AddHeaderToOperation(operation, paramNode);
+                AddHeadersToOperation(operation, paramNode);
             }
         }
 
-        private static bool HeaderParamValid(Func<string, bool> isValid, string value)
-        {
-            return isValid(value);
-        }
-
-        private static void AddHeaderToOperation(Operation operation, XPathNodeIterator paramNode)
+        private static void AddHeadersToOperation(Operation operation, XPathNodeIterator paramNode)
         {
             string uri = string.Empty; // the URI is always local for the header xml comments.
 
@@ -99,63 +94,21 @@ namespace Periwinkle.Swashbuckle
                 return;
             }
 
-            IEnumerable<IParameter> duplicateParams =
-                from p in operation.Parameters
-                where p.In == "header" && p.Name.ToLower() == httpHeaderName.ToLower()
-                select p;
+            IEnumerable<string> duplicateParams =
+                from n in operation.Responses.Keys
+                where n.ToLower() == httpHeaderName.ToLower()
+                select n;
 
-            if (duplicateParams.Count<IParameter>() == 0)
+            if (duplicateParams.Count<string>() == 0)
             {
-                StringBuilder description = new StringBuilder();
-
-                description.AppendLine(XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml));
-
-                partialSchema.Type = paramNode.Current.GetAttribute("type", uri); // Required
-                if (!HeaderParamValid((v => new List<string>()
-                        { "string", "number", "integer", "boolean", "array" }.Contains(v)), partialSchema.Type))
-                {
-                    HeaderParamValidationError(operation, new NonBodyParameter(),
-                        "Type must be one of: string, number, integer, boolean, array");
-                    return;
-                }
-
-                if (partialSchema.Type == "array")
-                {
-                    partialSchema.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", paramNode, description, uri, "csv");
-                    if (!HeaderParamValid((v => new List<string>()
-                        { "csv", "ssv", "tsv", "pipes" }.Contains(v)), partialSchema.CollectionFormat))
-                    {
-                        HeaderParamValidationError(operation, new NonBodyParameter(),
-                            "collectionFormat must be one of: csv, ssv, tsv, pipes");
-                        return;
-                    }
-
-                    // TODO: finish items...
-                    partialSchema.Items = null;
-                }
-
-                partialSchema.Default = GetStringParamAttributeWithDescription("default", paramNode, description, uri);
-
-                partialSchema.Format = GetStringParamAttributeWithDescription("format", paramNode, description, uri);
-                partialSchema.Maximum = GetIntParamAttributeWithDescription("maximum", paramNode, description, uri);
-                partialSchema.ExclusiveMaximum = GetBoolParamAttributeWithDescription("exclusiveMaximum", paramNode, description, uri);
-                partialSchema.Minimum = GetIntParamAttributeWithDescription("minimum", paramNode, description, uri);
-                partialSchema.ExclusiveMinimum = GetBoolParamAttributeWithDescription("exclusiveMinimum", paramNode, description, uri);
-                partialSchema.MaxLength = GetIntParamAttributeWithDescription("maxLength", paramNode, description, uri);
-                partialSchema.MinLength = GetIntParamAttributeWithDescription("minLength", paramNode, description, uri);
-                partialSchema.Pattern = GetStringParamAttributeWithDescription("pattern", paramNode, description, uri);
-                partialSchema.MaxItems = GetIntParamAttributeWithDescription("maxItems", paramNode, description, uri);
-                partialSchema.MinItems = GetIntParamAttributeWithDescription("minItems", paramNode, description, uri);
-                partialSchema.UniqueItems = GetBoolParamAttributeWithDescription("uniqueItems", paramNode, description, uri);
-                // TODO: implement Enum Attribute
-                //headerParam.Enum = GetListParamAttributeWithDescription("enum", paramNode, description, uri);
-                partialSchema.MultipleOf = GetIntParamAttributeWithDescription("multipleOf", paramNode, description, uri);
-
                 string attributeCode = paramNode.Current.GetAttribute("code", uri);
 
                 Response response = operation.Responses[attributeCode];
                 if (response == null)
                     return;
+
+                HeaderBuilder headerBuilder = new HeaderBuilder();
+                PartialHeader header = headerBuilder.GetHeader(paramNode);
 
                 if (response.Headers == null)
                     response.Headers = new Dictionary<string, Header>();
@@ -163,10 +116,10 @@ namespace Periwinkle.Swashbuckle
                 var x = from name in response.Headers.Keys select name;
                 if (x.Count<string>() == 0)
                 {
-                    Header header = TypeAdapter.Adapt<Header>(partialSchema);
-                    header.Type = paramNode.Current.GetAttribute("type", uri);
-                    header.Description = description.ToString();
-                    response.Headers.Add(httpHeaderName, header);
+                    Header responseHeader = TypeAdapter.Adapt<Header>(partialSchema);
+                    responseHeader.Type = paramNode.Current.GetAttribute("type", uri);
+                    responseHeader.Description = XmlCommentsTextHelper.Humanize(paramNode.Current.InnerXml);
+                    response.Headers.Add(httpHeaderName, responseHeader);
                 }
             }
         }

@@ -12,5 +12,7 @@ namespace Periwinkle.Swashbuckle
         public string name { get; set; }
 
         public bool? required { get; set; }
+
+        public int? ResponseCode { get; set; }
     }
 }

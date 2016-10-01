@@ -1,7 +1,4 @@
-﻿using System;
-using Swashbuckle.Swagger.Model;
-using Swashbuckle.SwaggerGen.Annotations;
-using Swashbuckle.SwaggerGen.Generator;
+﻿using Swashbuckle.SwaggerGen.Annotations;
 
 namespace Periwinkle.Swashbuckle
 {
@@ -35,30 +32,32 @@ namespace Periwinkle.Swashbuckle
                 description.AppendLine(XmlCommentsTextHelper.Humanize(headerNode.Current.InnerXml));
 
                 header.Type = headerNode.Current.GetAttribute("type", uri); // Required
-                //if (!HeaderParamValid((v => new List<string>()
-                //        { "string", "number", "integer", "boolean", "array" }.Contains(v)), header.Type))
-                //{
-                //    HeaderParamValidationError(operation, new NonBodyParameter(),
-                //        "Type must be one of: string, number, integer, boolean, array");
-                //    return;
-                //}
+                try
+                {
+                    var x = Enum.Parse(typeof(ParamType), header.Type);
+                }
+                catch (Exception exception)
+                {
+                    throw new SwaggerHeaderValidationException("Type must be one of: string, number, integer, boolean, array", exception);
+                }
 
-                //if (partialSchema.Type == "array")
-                //{
-                //    partialSchema.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", paramNode, description, uri, "csv");
-                //    if (!HeaderParamValid((v => new List<string>()
-                //        { "csv", "ssv", "tsv", "pipes" }.Contains(v)), header.CollectionFormat))
-                //    {
-                //        HeaderParamValidationError(operation, new NonBodyParameter(),
-                //            "collectionFormat must be one of: csv, ssv, tsv, pipes");
-                //        return;
-                //    }
+                if (header.Type == "array")
+                {
+                    header.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", ParamCollectionFormat.csv.ToString());
+                    try
+                    {
+                        var x = Enum.Parse(typeof(ParamCollectionFormat), header.CollectionFormat);
+                    }
+                    catch (Exception exception)
+                    {
+                        throw new SwaggerHeaderValidationException("Collection Format must be one of: csv, ssv, tsv, pipes", exception);
+                    }
 
-                //    // TODO: finish items...
-                //    header.Items = null;
-                //}
+                    //    // TODO: finish items...
+                    //    header.Items = null;
+                }
 
-                if (header.required != null && header.required.Value)
+                if (header.required == null || !header.required.Value)
                 {
                     header.Default = GetStringParamAttributeWithDescription("default");
                 }
@@ -102,7 +101,7 @@ namespace Periwinkle.Swashbuckle
             {
                 value = Convert.ToBoolean(rawValue);
             }
-            return value;
+            return value == null ? false : value;
         }
 
         public int? GetIntParamAttributeWithDescription(string attributeName)
@@ -119,15 +118,11 @@ namespace Periwinkle.Swashbuckle
             return value;
         }
 
-        public string GetStringParamAttributeWithDescription(string attributeName)
+        public string GetStringParamAttributeWithDescription(string attributeName, string defaultValue = default(string))
         {
             string rawValue = headerNode.Current.GetAttribute(attributeName, uri);
-            string value = default(string);
 
-            if (!String.IsNullOrWhiteSpace(rawValue))
-            {
-                value = rawValue;
-            }
+            string value = String.IsNullOrWhiteSpace(rawValue) ? defaultValue : rawValue;
 
             BuildDescription(attributeName, rawValue, value);
             return value;
@@ -146,11 +141,6 @@ namespace Periwinkle.Swashbuckle
                 description.AppendLine();
                 description.AppendFormat("{0} = {1}", attributeName, value);
             }
-        }
-
-        internal void AppendLine(string v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
