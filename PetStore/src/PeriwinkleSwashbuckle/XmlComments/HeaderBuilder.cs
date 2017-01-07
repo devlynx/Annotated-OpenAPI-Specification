@@ -31,22 +31,23 @@ namespace Periwinkle.Swashbuckle
 
                 description.AppendLine(XmlCommentsTextHelper.Humanize(headerNode.Current.InnerXml));
 
-                header.Type = headerNode.Current.GetAttribute("type", uri); // Required
+                string headerType = headerNode.Current.GetAttribute("type", uri); // Required
                 try
                 {
-                    var x = Enum.Parse(typeof(ParamType), header.Type);
+                    header.Type = (ParamType)Enum.Parse(typeof(ParamType), headerType);
                 }
                 catch (Exception exception)
                 {
                     throw new SwaggerHeaderValidationException("Type must be one of: string, number, integer, boolean, array", exception);
                 }
 
-                if (header.Type == "array")
+                if (headerType == "array")
                 {
-                    header.CollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", ParamCollectionFormat.csv.ToString());
+                    string headerCollectionFormat = GetStringParamAttributeWithDescription("collectionFormat", ParamCollectionFormat.csv.ToString());
                     try
                     {
-                        var x = Enum.Parse(typeof(ParamCollectionFormat), header.CollectionFormat);
+                        var x = Enum.Parse(typeof(ParamCollectionFormat), headerCollectionFormat);
+                        header.CollectionFormat = (ParamCollectionFormat)Enum.Parse(typeof(ParamCollectionFormat), headerCollectionFormat);
                     }
                     catch (Exception exception)
                     {

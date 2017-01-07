@@ -18,6 +18,7 @@ using Swashbuckle.Swagger.Model;
 namespace PetStore
 {
     using System.IO;
+    using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -75,8 +76,8 @@ namespace PetStore
                     c.SingleApiVersion(new Info
                     {
                         Version = apiVersion,
-                        Title = "Swagger Petstore",
-                        Description = @"This is a sample server Petstore server. 
+                        Title = "Swagger PetStore",
+                        Description = @"This is a sample server PetStore server. 
 You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
 ## Markdown test
@@ -101,7 +102,8 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
                     c.DescribeAllEnumsAsStrings();
                     c.IncludeXmlComments(GetXmlCommentsPath());
-                    c.DocumentFilter<XmlCommentsControllerSubTitleTags>(GetXmlCommentsPath());
+                    //c.DocumentFilter<ControllerSubTitleAnnotations>();
+                    c.DocumentFilter<XmlCommentsControllerSubTitleTags>(GetXmlCommentsPath(), this.GetType().GetTypeInfo().Assembly);
                     c.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(GetXmlCommentsPath());
                     c.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(GetXmlCommentsPath());
                 });

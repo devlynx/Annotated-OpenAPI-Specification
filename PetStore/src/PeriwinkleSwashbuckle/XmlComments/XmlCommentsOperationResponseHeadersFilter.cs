@@ -48,7 +48,8 @@ namespace Periwinkle.Swashbuckle
         public void Apply(Operation operation, OperationFilterContext context)
         {
             var controllerActionDescriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
-            if (controllerActionDescriptor == null) return;
+            if (controllerActionDescriptor == null)
+                return;
 
             //ApplyGlobalHeaderComments(operation, controllerActionDescriptor);
             ApplyOperationHeaderComments(operation, controllerActionDescriptor);
@@ -56,15 +57,19 @@ namespace Periwinkle.Swashbuckle
 
         private void ApplyOperationHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
         {
-            var commentId = XmlCommentsIdHelper.GetCommentIdForMethod(controllerActionDescriptor.MethodInfo);
-            var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+            string commentId = XmlCommentsIdHelper.GetCommentIdForMethod(controllerActionDescriptor.MethodInfo);
+            if (String.IsNullOrWhiteSpace(commentId))
+                return;
+            XPathNavigator commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+            if (commentNode == null)
+                return;
             ApplyHeaderComments(operation, commentNode, ResponseHeaderName);
         }
 
         //private void ApplyGlobalHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
         //{
-        //    var commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
-        //    var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+        //    string commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
+        //    XPathNavigator commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
         //    ApplyHeaderComments(operation, commentNode, GlobalResponseHeaderName);
         //}
 

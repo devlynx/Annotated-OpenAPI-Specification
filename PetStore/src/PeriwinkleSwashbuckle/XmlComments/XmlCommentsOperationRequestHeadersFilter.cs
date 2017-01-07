@@ -56,15 +56,24 @@ namespace Periwinkle.Swashbuckle
 
         private void ApplyOperationHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
         {
-            var commentId = XmlCommentsIdHelper.GetCommentIdForMethod(controllerActionDescriptor.MethodInfo);
-            var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+            string commentId = XmlCommentsIdHelper.GetCommentIdForMethod(controllerActionDescriptor.MethodInfo);
+            if (String.IsNullOrWhiteSpace(commentId))
+                return;
+            XPathNavigator commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+            if (commentNode == null)
+                return;
+
             ApplyHeaderComments(operation, commentNode, RequestHeaderName);
         }
 
         private void ApplyGlobalHeaderComments(Operation operation, ControllerActionDescriptor controllerActionDescriptor)
         {
-            var commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
-            var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+            string commentId = XmlCommentsIdHelper.GetCommentIdForType(controllerActionDescriptor.ControllerTypeInfo.UnderlyingSystemType);
+            if (String.IsNullOrWhiteSpace(commentId))
+                return;
+            XPathNavigator commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+            if (commentNode == null)
+                return;
             ApplyHeaderComments(operation, commentNode, GlobalRequestHeaderName);
         }
 

@@ -28,28 +28,42 @@ namespace Periwinkle.Swashbuckle
 
     public class XmlCommentsControllerSubTitleTags : IDocumentFilter
     {
-        private readonly XPathNavigator _xmlNavigator;
+        private readonly XPathNavigator xmlNavigator;
+        private readonly Assembly controllerAssembly;
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
         private const string SubTitleXPath = "controllerSubTitle";
 
-        public XmlCommentsControllerSubTitleTags(string xmlDocPath)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XmlCommentsControllerSubTitleTags"/> class.
+        /// </summary>
+        /// <param name="xmlDocPath">The XML document path.</param>
+        /// <param name="controllerAssembly">The assembly containing the controller to document.
+        /// If the controllerAssembly is null it will use Assembly.GetEntryAssembly().</param>
+        public XmlCommentsControllerSubTitleTags(string xmlDocPath, Assembly controllerAssembly = null)
         {
-            var xmlDoc = new XPathDocument(xmlDocPath);
-            _xmlNavigator = xmlDoc.CreateNavigator();
+            XPathDocument xmlDoc = new XPathDocument(xmlDocPath);
+            xmlNavigator = xmlDoc.CreateNavigator();
+            if (controllerAssembly == null)
+                this.controllerAssembly = Assembly.GetEntryAssembly();
+            else
+                this.controllerAssembly = controllerAssembly;
         }
 
         public void Apply(SwaggerDocument swaggerDocument, DocumentFilterContext context)
         {
-            AddControllerTagDescriptions(swaggerDocument);
+            AddControllerTagDescriptions(swaggerDocument, context);
         }
 
-        private void AddControllerTagDescriptions(SwaggerDocument swaggerDocument)
+        private void AddControllerTagDescriptions(SwaggerDocument swaggerDocument, DocumentFilterContext context)
         {
             string uri = String.Empty;
 
-            var controllers = from t in Assembly.GetEntryAssembly().GetTypes()
-                              where typeof(Controller).IsAssignableFrom(t)
-                              select t;
+            IEnumerable<Type> controllers = from g in context.ApiDescriptionsGroups.Items
+                from type in controllerAssembly.GetTypes()
+                                            where typeof(Controller).IsAssignableFrom(type)
+                                            //&& type.Name == context.ApiDescriptionsGroups.
+                                            select type;
+
             if (controllers.Count<Type>() == 0)
                 return;
 
@@ -59,7 +73,11 @@ namespace Periwinkle.Swashbuckle
             foreach (Type type in controllers)
             {
                 var commentId = XmlCommentsIdHelper.GetCommentIdForType(type);
-                var commentNode = _xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+                var commentNode = xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
+
+                if (commentNode == null)
+                    continue;
+
                 var subtitleNode = commentNode.SelectSingleNode(SubTitleXPath);
 
                 if (subtitleNode == null)
