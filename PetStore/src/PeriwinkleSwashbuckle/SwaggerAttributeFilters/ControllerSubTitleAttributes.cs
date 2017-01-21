@@ -4,11 +4,12 @@ using Swashbuckle.SwaggerGen.Generator;
 
 namespace Periwinkle.Swashbuckle
 {
-    public class ControllerSubTitleAnnotations : IDocumentFilter
+    using Periwinkle.Swashbuckle.SwaggerAttributes;
+    public class ControllerSubTitleAttributeFilter : IDocumentFilter
     {
         private readonly Assembly controllerAssembly;
 
-        public ControllerSubTitleAnnotations(Assembly controllerAssembly = null)
+        public ControllerSubTitleAttributeFilter(Assembly controllerAssembly = null)
         {
             if (controllerAssembly == null)
                 this.controllerAssembly = Assembly.GetEntryAssembly();
@@ -22,12 +23,10 @@ namespace Periwinkle.Swashbuckle
 
         private static void ApplyControllerSubTitleAttributes(SwaggerDocument swaggerDoc, DocumentFilterContext context)
         {
-            //var attribute = context.ApiDescription.GetActionAttributes()
+            //var attribute = context.ApiDescriptionsGroups.Items
             //    .OfType<ControllerSubTitleAttribute>()
             //    .FirstOrDefault();
             //if (attribute == null) return;
-
-
 
             //if (attribute.OperationId != null)
             //    operation.OperationId = attribute.OperationId;

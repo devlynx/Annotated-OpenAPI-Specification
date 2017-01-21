@@ -4,6 +4,7 @@
   "dependencies": {
     "Mapster": "2.6.1",
     "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
+    "Serilog": "2.3.0",
     "Swashbuckle": "6.0.0-beta902"
   },
 

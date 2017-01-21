@@ -1,4 +1,4 @@
-﻿#region Copyright (c) 2016 Periwinkle Software Limited
+﻿#region Copyright (c) 2016-2017 Periwinkle Software Limited
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,14 +17,12 @@ using Swashbuckle.Swagger.Model;
 
 namespace PetStore
 {
-    using System.IO;
     using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.PlatformAbstractions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using Periwinkle.Swashbuckle;
@@ -57,6 +55,7 @@ namespace PetStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<IControllerSubTitles, XmlCommentsControllerSubTitles>();
             services.AddMvc().AddJsonOptions(options =>
                 {
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -64,16 +63,12 @@ namespace PetStore
                     options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                     options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
-# if DEBUG
                     options.SerializerSettings.Formatting = Formatting.Indented;
-#else
-                    options.SerializerSettings.Formatting = Formatting.None;
-#endif
                 });
 
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(swaggerGenOptions =>
                 {
-                    c.SingleApiVersion(new Info
+                    swaggerGenOptions.SingleApiVersion(new Info
                     {
                         Version = apiVersion,
                         Title = "Swagger PetStore",
@@ -100,12 +95,13 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
                         },
                     });
 
-                    c.DescribeAllEnumsAsStrings();
-                    c.IncludeXmlComments(GetXmlCommentsPath());
-                    //c.DocumentFilter<ControllerSubTitleAnnotations>();
-                    c.DocumentFilter<XmlCommentsControllerSubTitleTags>(GetXmlCommentsPath(), this.GetType().GetTypeInfo().Assembly);
-                    c.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(GetXmlCommentsPath());
-                    c.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(GetXmlCommentsPath());
+                    swaggerGenOptions.DescribeAllEnumsAsStrings();
+
+                    swaggerGenOptions.IncludeXmlComments(XmlCommentTools.GetXmlCommentsPath());
+                    swaggerGenOptions.DocumentFilter<ControllerSubTitleTags>(this.GetType().GetTypeInfo().Assembly);
+
+                    swaggerGenOptions.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(XmlCommentTools.GetXmlCommentsPath());
+                    swaggerGenOptions.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(XmlCommentTools.GetXmlCommentsPath());
                 });
         }
 
@@ -127,12 +123,6 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
             app.UseSwagger("swagger/{apiVersion}/swagger.json");
             app.UseSwaggerUi(swaggerUrl: string.Format("/swagger/{0}/swagger.json", apiVersion));
-        }
-
-        private static string GetXmlCommentsPath()
-        {
-            var app = PlatformServices.Default.Application;
-            return Path.Combine(app.ApplicationBasePath, app.ApplicationName + ".xml");
         }
     }
 }

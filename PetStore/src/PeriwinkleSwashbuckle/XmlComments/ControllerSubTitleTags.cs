@@ -1,4 +1,4 @@
-﻿#region Copyright (c) 2016 Periwinkle Software Limited
+﻿#region Copyright (c) 2016-2017 Periwinkle Software Limited
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,6 @@
 #endregion
 
 using Swashbuckle.Swagger.Model;
-using Swashbuckle.SwaggerGen.Annotations;
 using Swashbuckle.SwaggerGen.Generator;
 
 namespace Periwinkle.Swashbuckle
@@ -23,30 +22,31 @@ namespace Periwinkle.Swashbuckle
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
-    using System.Xml.XPath;
     using Microsoft.AspNetCore.Mvc;
 
-    public class XmlCommentsControllerSubTitleTags : IDocumentFilter
+    public class ControllerSubTitleTags : IDocumentFilter
     {
-        private readonly XPathNavigator xmlNavigator;
         private readonly Assembly controllerAssembly;
-        private const string MemberXPath = "/doc/members/member[@name='{0}']";
-        private const string SubTitleXPath = "controllerSubTitle";
+
+        private IControllerSubTitles controllerSubTitles;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XmlCommentsControllerSubTitleTags"/> class.
+        /// Initializes a new instance of the <see cref="ControllerSubTitleTags"/> class.
         /// </summary>
         /// <param name="xmlDocPath">The XML document path.</param>
         /// <param name="controllerAssembly">The assembly containing the controller to document.
         /// If the controllerAssembly is null it will use Assembly.GetEntryAssembly().</param>
-        public XmlCommentsControllerSubTitleTags(string xmlDocPath, Assembly controllerAssembly = null)
+        public ControllerSubTitleTags(
+            //string xmlDocPath, 
+            IControllerSubTitles controllerSubTitles, Assembly controllerAssembly = null)
         {
-            XPathDocument xmlDoc = new XPathDocument(xmlDocPath);
-            xmlNavigator = xmlDoc.CreateNavigator();
+            //XPathDocument xmlDoc = new XPathDocument(xmlDocPath);
+            //xmlNavigator = xmlDoc.CreateNavigator();
             if (controllerAssembly == null)
                 this.controllerAssembly = Assembly.GetEntryAssembly();
             else
                 this.controllerAssembly = controllerAssembly;
+            this.controllerSubTitles = controllerSubTitles; 
         }
 
         public void Apply(SwaggerDocument swaggerDocument, DocumentFilterContext context)
@@ -72,22 +72,8 @@ namespace Periwinkle.Swashbuckle
 
             foreach (Type type in controllers)
             {
-                var commentId = XmlCommentsIdHelper.GetCommentIdForType(type);
-                var commentNode = xmlNavigator.SelectSingleNode(string.Format(MemberXPath, commentId));
-
-                if (commentNode == null)
-                    continue;
-
-                var subtitleNode = commentNode.SelectSingleNode(SubTitleXPath);
-
-                if (subtitleNode == null)
-                    continue;
-
-                string subTitleName = subtitleNode.GetAttribute("name", uri);
-
-                string controllerName = !String.IsNullOrWhiteSpace(subTitleName) ? subTitleName : GetDefaultControllerName(type.Name);
-
-                swaggerDocument.Tags.Add(new Tag() { Name = controllerName, Description = XmlCommentsTextHelper.Humanize(subtitleNode.InnerXml) });
+                string subTitle = controllerSubTitles.GetControllerSubTitle(type);
+                swaggerDocument.Tags.Add(new Tag() { Name = GetDefaultControllerName(type.Name), Description = subTitle });
             }
         }
 

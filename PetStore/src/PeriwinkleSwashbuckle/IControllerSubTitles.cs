@@ -13,18 +13,12 @@
 // limitations under the License.
 #endregion
 
-namespace Periwinkle.Swashbuckle.SwaggerAttributes
+namespace Periwinkle.Swashbuckle
 {
     using System;
 
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public class ControllerSubTitleAttribute : Attribute
+    public interface IControllerSubTitles
     {
-        public ControllerSubTitleAttribute(string subTitle)
-        {
-            SubTitle = subTitle;
-        }
-
-        public string SubTitle { get; set; }
+        string GetControllerSubTitle(Type controllerType);
     }
 }

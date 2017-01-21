@@ -13,18 +13,17 @@
 // limitations under the License.
 #endregion
 
-namespace Periwinkle.Swashbuckle.SwaggerAttributes
+namespace Periwinkle.Swashbuckle
 {
-    using System;
+    using System.IO;
+    using Microsoft.Extensions.PlatformAbstractions;
 
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public class ControllerSubTitleAttribute : Attribute
+    public static class XmlCommentTools
     {
-        public ControllerSubTitleAttribute(string subTitle)
+        public static string GetXmlCommentsPath()
         {
-            SubTitle = subTitle;
+            var app = PlatformServices.Default.Application;
+            return Path.Combine(app.ApplicationBasePath, app.ApplicationName + ".xml");
         }
-
-        public string SubTitle { get; set; }
     }
 }
