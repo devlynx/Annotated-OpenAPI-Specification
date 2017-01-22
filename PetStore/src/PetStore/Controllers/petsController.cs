@@ -22,6 +22,7 @@ namespace PetStore
     using System.ComponentModel.DataAnnotations;
     using Periwinkle.Swashbuckle;
     using Microsoft.AspNetCore.Mvc;
+    using Periwinkle.Swashbuckle.SwaggerAttributes;
 
     /// <controllerSubTitle name="pets">Everything about your pets</controllerSubTitle>
     /// <globalHttpRequestHeader 
@@ -31,6 +32,7 @@ namespace PetStore
     ///     required="true">Guid to help track request flow.
     /// </globalHttpRequestHeader>
 
+    [ControllerSubTitle("Everything about your pets")]
     [Route("[controller]")]
     [Produces("application/json")]
     public class petsController : Controller

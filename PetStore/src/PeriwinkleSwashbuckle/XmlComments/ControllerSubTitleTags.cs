@@ -28,20 +28,16 @@ namespace Periwinkle.Swashbuckle
     {
         private readonly Assembly controllerAssembly;
 
-        private IControllerSubTitles controllerSubTitles;
+        private readonly IControllerSubTitles controllerSubTitles;
+        private readonly IXmlCommentTools xmlCommentTools;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ControllerSubTitleTags"/> class.
         /// </summary>
-        /// <param name="xmlDocPath">The XML document path.</param>
-        /// <param name="controllerAssembly">The assembly containing the controller to document.
-        /// If the controllerAssembly is null it will use Assembly.GetEntryAssembly().</param>
-        public ControllerSubTitleTags(
-            //string xmlDocPath, 
-            IControllerSubTitles controllerSubTitles, Assembly controllerAssembly = null)
+        /// <param name="controllerSubTitles">IControllerSubTitles implementation which obtains the subtitle text.</param>
+        /// <param name="controllerAssembly">The controller assembly.</param>
+        public ControllerSubTitleTags(IControllerSubTitles controllerSubTitles, Assembly controllerAssembly = null)
         {
-            //XPathDocument xmlDoc = new XPathDocument(xmlDocPath);
-            //xmlNavigator = xmlDoc.CreateNavigator();
             if (controllerAssembly == null)
                 this.controllerAssembly = Assembly.GetEntryAssembly();
             else

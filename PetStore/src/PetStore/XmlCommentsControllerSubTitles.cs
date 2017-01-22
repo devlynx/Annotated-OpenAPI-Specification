@@ -12,9 +12,9 @@ namespace PetStore
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
         private const string SubTitleXPath = "controllerSubTitle";
 
-        public XmlCommentsControllerSubTitles()
+        public XmlCommentsControllerSubTitles(IXmlCommentTools xmlCommentTools)
         {
-            XPathDocument xmlDoc = new XPathDocument(XmlCommentTools.GetXmlCommentsPath());
+            XPathDocument xmlDoc = new XPathDocument(xmlCommentTools.GetXmlCommentsPath());
             xmlNavigator = xmlDoc.CreateNavigator();
         }
 

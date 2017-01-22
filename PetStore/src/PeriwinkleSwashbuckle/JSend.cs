@@ -1,4 +1,4 @@
-﻿#region Copyright (c) 2016 Periwinkle Software Limited
+﻿#region Copyright (c) 2016-2017Periwinkle Software Limited
 // MIT License -- https://opensource.org/licenses/MIT
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and 
@@ -23,6 +23,7 @@ namespace Periwinkle.Swashbuckle
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+
     public class JSend<T>
     {
         /// <summary>

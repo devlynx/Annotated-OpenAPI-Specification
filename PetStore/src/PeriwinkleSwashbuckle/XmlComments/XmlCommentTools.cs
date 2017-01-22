@@ -18,9 +18,9 @@ namespace Periwinkle.Swashbuckle
     using System.IO;
     using Microsoft.Extensions.PlatformAbstractions;
 
-    public static class XmlCommentTools
+    public class XmlCommentTools : IXmlCommentTools
     {
-        public static string GetXmlCommentsPath()
+        public string GetXmlCommentsPath()
         {
             var app = PlatformServices.Default.Application;
             return Path.Combine(app.ApplicationBasePath, app.ApplicationName + ".xml");

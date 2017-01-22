@@ -17,6 +17,7 @@ using Swashbuckle.Swagger.Model;
 
 namespace PetStore
 {
+    using System;
     using System.Reflection;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,7 @@ namespace PetStore
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using Periwinkle.Swashbuckle;
+    using Periwinkle.Swashbuckle.SwaggerAttributeFilters;
     using Serilog;
 
     public class Startup
@@ -55,7 +57,11 @@ namespace PetStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IControllerSubTitles, XmlCommentsControllerSubTitles>();
+
+            //services.AddTransient<IXmlCommentTools, XmlCommentTools>();
+            //services.AddTransient<IControllerSubTitles, XmlCommentsControllerSubTitles>();
+            services.AddTransient<IControllerSubTitles, AttributesControllerSubTitles>();
+
             services.AddMvc().AddJsonOptions(options =>
                 {
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -97,11 +103,14 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
                     swaggerGenOptions.DescribeAllEnumsAsStrings();
 
-                    swaggerGenOptions.IncludeXmlComments(XmlCommentTools.GetXmlCommentsPath());
+                    //IServiceProvider serviceProvider = services.BuildServiceProvider();
+                    //IXmlCommentTools xmlCommentTools = serviceProvider.GetService<IXmlCommentTools>();
+
+                    //swaggerGenOptions.IncludeXmlComments(xmlCommentTools.GetXmlCommentsPath());
                     swaggerGenOptions.DocumentFilter<ControllerSubTitleTags>(this.GetType().GetTypeInfo().Assembly);
 
-                    swaggerGenOptions.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(XmlCommentTools.GetXmlCommentsPath());
-                    swaggerGenOptions.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(XmlCommentTools.GetXmlCommentsPath());
+                    //swaggerGenOptions.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(xmlCommentTools.GetXmlCommentsPath());
+                    //swaggerGenOptions.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(xmlCommentTools.GetXmlCommentsPath());
                 });
         }
 
