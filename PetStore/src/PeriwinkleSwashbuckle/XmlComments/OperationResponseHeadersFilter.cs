@@ -27,7 +27,7 @@ namespace Periwinkle.Swashbuckle
     using Mapster;
     using Microsoft.AspNetCore.Mvc.Controllers;
 
-    public class XmlCommentsOperationResponseHeadersFilter : IOperationFilter
+    public class OperationResponseHeadersFilter : IOperationFilter
     {
         private const string ResponseHeaderName = "httpResponseHeader";
         private const string HttpResponseHeaderXPath = ResponseHeaderName + "[@name='{0}' type='{1}']";
@@ -39,7 +39,7 @@ namespace Periwinkle.Swashbuckle
 
         private readonly XPathNavigator _xmlNavigator;
 
-        public XmlCommentsOperationResponseHeadersFilter(string xmlDocPath, bool allowDuplicates = true, bool throwExceptions = true)
+        public OperationResponseHeadersFilter(string xmlDocPath, bool allowDuplicates = true, bool throwExceptions = true)
         {
             var xmlDoc = new XPathDocument(xmlDocPath);
             _xmlNavigator = xmlDoc.CreateNavigator();
@@ -129,47 +129,47 @@ namespace Periwinkle.Swashbuckle
             }
         }
 
-        private static bool? GetBoolParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
-        {
-            string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
-            bool? value = default(bool?);
+        //private static bool? GetBoolParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
+        //{
+        //    string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
+        //    bool? value = default(bool?);
 
-            if (!String.IsNullOrWhiteSpace(rawValue))
-            {
-                value = Convert.ToBoolean(rawValue);
-            }
+        //    if (!String.IsNullOrWhiteSpace(rawValue))
+        //    {
+        //        value = Convert.ToBoolean(rawValue);
+        //    }
 
-            BuildDescription(attributeName, description, rawValue, value);
-            return value;
-        }
+        //    BuildDescription(attributeName, description, rawValue, value);
+        //    return value;
+        //}
 
-        private static int? GetIntParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
-        {
-            string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
-            int? value = default(int?);
+        //private static int? GetIntParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
+        //{
+        //    string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
+        //    int? value = default(int?);
 
-            if (!String.IsNullOrWhiteSpace(rawValue))
-            {
-                value = Convert.ToInt32(rawValue);
-            }
+        //    if (!String.IsNullOrWhiteSpace(rawValue))
+        //    {
+        //        value = Convert.ToInt32(rawValue);
+        //    }
 
-            BuildDescription(attributeName, description, rawValue, value);
-            return value;
-        }
+        //    BuildDescription(attributeName, description, rawValue, value);
+        //    return value;
+        //}
 
-        private static string GetStringParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
-        {
-            string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
-            string value = default(string);
+        //private static string GetStringParamAttributeWithDescription(string attributeName, XPathNodeIterator paramNode, StringBuilder description, string uri, string defaultValue = null)
+        //{
+        //    string rawValue = paramNode.Current.GetAttribute(attributeName, uri);
+        //    string value = default(string);
 
-            if (!String.IsNullOrWhiteSpace(rawValue))
-            {
-                value = rawValue;
-            }
+        //    if (!String.IsNullOrWhiteSpace(rawValue))
+        //    {
+        //        value = rawValue;
+        //    }
 
-            BuildDescription(attributeName, description, rawValue, value);
-            return value;
-        }
+        //    BuildDescription(attributeName, description, rawValue, value);
+        //    return value;
+        //}
 
         private static void BuildDescription<T>(string attributeName, StringBuilder description, string rawValue, T value)
         {

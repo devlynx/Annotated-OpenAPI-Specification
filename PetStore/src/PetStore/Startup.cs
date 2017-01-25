@@ -58,9 +58,9 @@ namespace PetStore
         {
             services.AddMvc();
 
-            //services.AddTransient<IXmlCommentTools, XmlCommentTools>();
-            //services.AddTransient<IControllerSubTitles, XmlCommentsControllerSubTitles>();
-            services.AddTransient<IControllerSubTitles, AttributesControllerSubTitles>();
+            services.AddTransient<IXmlCommentTools, XmlCommentTools>();
+            services.AddTransient<IControllerSubTitles, XmlCommentsControllerSubTitles>();
+            //services.AddTransient<IControllerSubTitles, AttributesControllerSubTitles>();
 
             services.AddMvc().AddJsonOptions(options =>
                 {
@@ -103,14 +103,14 @@ You can find out more about Swagger at [http://swagger.io](http://swagger.io).
 
                     swaggerGenOptions.DescribeAllEnumsAsStrings();
 
-                    //IServiceProvider serviceProvider = services.BuildServiceProvider();
-                    //IXmlCommentTools xmlCommentTools = serviceProvider.GetService<IXmlCommentTools>();
+                    IServiceProvider serviceProvider = services.BuildServiceProvider();
+                    IXmlCommentTools xmlCommentTools = serviceProvider.GetService<IXmlCommentTools>();
 
-                    //swaggerGenOptions.IncludeXmlComments(xmlCommentTools.GetXmlCommentsPath());
+                    swaggerGenOptions.IncludeXmlComments(xmlCommentTools.GetXmlCommentsPath());
                     swaggerGenOptions.DocumentFilter<ControllerSubTitleTags>(this.GetType().GetTypeInfo().Assembly);
 
-                    //swaggerGenOptions.OperationFilter<XmlCommentsOperationRequestHeadersFilter>(xmlCommentTools.GetXmlCommentsPath());
-                    //swaggerGenOptions.OperationFilter<XmlCommentsOperationResponseHeadersFilter>(xmlCommentTools.GetXmlCommentsPath());
+                    swaggerGenOptions.OperationFilter<OperationRequestHeadersFilter>(xmlCommentTools.GetXmlCommentsPath());
+                    swaggerGenOptions.OperationFilter<OperationResponseHeadersFilter>(xmlCommentTools.GetXmlCommentsPath());
                 });
         }
 

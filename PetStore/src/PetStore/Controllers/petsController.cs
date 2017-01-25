@@ -25,12 +25,12 @@ namespace PetStore
     using Periwinkle.Swashbuckle.SwaggerAttributes;
 
     /// <controllerSubTitle name="pets">Everything about your pets</controllerSubTitle>
-    /// <globalHttpRequestHeader 
+    /// <httpRequestHeader 
     ///     name="CorelationId" 
     ///     type="string"
     ///     pattern="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" 
     ///     required="true">Guid to help track request flow.
-    /// </globalHttpRequestHeader>
+    /// </httpRequestHeader>
 
     [ControllerSubTitle("Everything about your pets")]
     [Route("[controller]")]
